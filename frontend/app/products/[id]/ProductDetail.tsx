@@ -1,0 +1,184 @@
+"use client";
+
+import { useState } from "react";
+import Image from "next/image";
+import { useCart } from "@/context/CartContext";
+import { Product, ProductVariant } from "@/lib/api";
+
+const FIXED_PRICE = "39.99";
+
+function getVariantImage(variant: ProductVariant, thumbnail: string): string {
+  const priority = ["mockup", "preview", "front_large", "front"];
+  for (const type of priority) {
+    const file = variant.files?.find((f) => f.type === type && f.preview_url);
+    if (file) return file.preview_url;
+  }
+  const any = variant.files?.find((f) => f.preview_url);
+  return any?.preview_url ?? thumbnail;
+}
+
+function getColorName(variant: ProductVariant): string {
+  const parts = variant.name.split(" / ");
+  return parts.length > 1 ? parts[parts.length - 2] : parts[0];
+}
+
+function getSizeName(variant: ProductVariant): string {
+  const parts = variant.name.split(" / ");
+  return parts[parts.length - 1];
+}
+
+export default function ProductDetail({ product }: { product: Product }) {
+  const variants = product.sync_variants ?? [];
+  const { addItem } = useCart();
+
+  // One representative variant per color (for the carousel)
+  const colorVariants = [...new Map(variants.map((v) => [getColorName(v), v])).values()];
+
+  const [activeIndex, setActiveIndex] = useState(0);
+  const selectedColor = colorVariants[activeIndex];
+
+  const sizesForColor = variants.filter(
+    (v) => getColorName(v) === getColorName(selectedColor)
+  );
+  const [selectedSize, setSelectedSize] = useState<ProductVariant>(sizesForColor[0]);
+
+  function handleColorSelect(index: number) {
+    setActiveIndex(index);
+    const newSizes = variants.filter(
+      (v) => getColorName(v) === getColorName(colorVariants[index])
+    );
+    setSelectedSize(newSizes[0]);
+  }
+
+  const mainImage = getVariantImage(selectedColor, product.thumbnail_url);
+
+  function handlePrev() {
+    handleColorSelect((activeIndex - 1 + colorVariants.length) % colorVariants.length);
+  }
+
+  function handleNext() {
+    handleColorSelect((activeIndex + 1) % colorVariants.length);
+  }
+
+  function handleAddToCart() {
+    const variant = variants.find(
+      (v) => getColorName(v) === getColorName(selectedColor) && getSizeName(v) === getSizeName(selectedSize)
+    ) ?? selectedSize;
+
+    addItem({
+      variantId: variant.id,
+      productId: product.id,
+      name: `${product.name} — ${getColorName(selectedColor)} / ${getSizeName(selectedSize)}`,
+      price: FIXED_PRICE,
+      image: mainImage,
+      quantity: 1,
+    });
+  }
+
+  return (
+    <div className="max-w-5xl mx-auto px-6 py-12">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
+
+        {/* Carrousel */}
+        <div className="flex flex-col gap-4">
+          {/* Image principale */}
+          <div className="relative aspect-square bg-gray-50 rounded-2xl overflow-hidden">
+            <Image
+              key={mainImage}
+              src={mainImage}
+              alt={`${product.name} — ${getColorName(selectedColor)}`}
+              fill
+              className="object-contain"
+              priority
+            />
+            {/* Flèches */}
+            {colorVariants.length > 1 && (
+              <>
+                <button
+                  onClick={handlePrev}
+                  className="absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 bg-white/80 backdrop-blur rounded-full shadow flex items-center justify-center hover:bg-white transition"
+                  aria-label="Précédent"
+                >
+                  ‹
+                </button>
+                <button
+                  onClick={handleNext}
+                  className="absolute right-3 top-1/2 -translate-y-1/2 w-9 h-9 bg-white/80 backdrop-blur rounded-full shadow flex items-center justify-center hover:bg-white transition"
+                  aria-label="Suivant"
+                >
+                  ›
+                </button>
+              </>
+            )}
+          </div>
+
+          {/* Thumbnails */}
+          <div className="flex gap-2 justify-center flex-wrap">
+            {colorVariants.map((v, i) => {
+              const img = getVariantImage(v, product.thumbnail_url);
+              return (
+                <button
+                  key={v.id}
+                  onClick={() => handleColorSelect(i)}
+                  className={`w-16 h-16 relative rounded-xl overflow-hidden border-2 transition-colors flex-shrink-0 ${
+                    i === activeIndex ? "border-black" : "border-transparent"
+                  }`}
+                >
+                  <Image
+                    src={img}
+                    alt={getColorName(v)}
+                    fill
+                    className="object-contain bg-gray-50"
+                  />
+                </button>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* Infos produit */}
+        <div className="flex flex-col gap-6 pt-2">
+          <div>
+            <h1 className="text-3xl font-bold text-gray-900">{product.name}</h1>
+            <p className="text-sm text-gray-400 mt-1">{getColorName(selectedColor)}</p>
+          </div>
+
+          <p className="text-3xl font-semibold text-gray-900">€{FIXED_PRICE}</p>
+
+          {/* Tailles */}
+          <div className="space-y-3">
+            <p className="text-sm font-medium text-gray-500">
+              Taille — <span className="text-gray-900 font-semibold">{getSizeName(selectedSize)}</span>
+            </p>
+            <div className="flex flex-wrap gap-2">
+              {sizesForColor.map((v) => (
+                <button
+                  key={v.id}
+                  onClick={() => setSelectedSize(v)}
+                  className={`min-w-[3rem] px-3 py-2 text-sm rounded-full border transition-colors ${
+                    getSizeName(v) === getSizeName(selectedSize)
+                      ? "bg-black text-white border-black"
+                      : "border-gray-200 text-gray-700 hover:border-gray-400"
+                  }`}
+                >
+                  {getSizeName(v)}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          <button
+            onClick={handleAddToCart}
+            className="w-full bg-black text-white py-4 rounded-full text-sm font-semibold hover:bg-gray-800 transition-colors mt-2"
+          >
+            Ajouter au panier — €{FIXED_PRICE}
+          </button>
+
+          <p className="text-xs text-gray-400 text-center">
+            Livraison estimée sous 5–10 jours ouvrés · Produit à la commande
+          </p>
+        </div>
+      </div>
+    </div>
+  );
+}

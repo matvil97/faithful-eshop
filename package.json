@@ -1,0 +1,30 @@
+{
+  "name": "faithful-eshop",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test:printful": "node src/scripts/test-printful.js",
+    "update:prices": "node src/scripts/update-prices.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/matvil97/faithful-eshop.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/matvil97/faithful-eshop/issues"
+  },
+  "homepage": "https://github.com/matvil97/faithful-eshop#readme",
+  "dependencies": {
+    "axios": "^1.17.0",
+    "cors": "^2.8.6",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "stripe": "^22.2.1"
+  }
+}
