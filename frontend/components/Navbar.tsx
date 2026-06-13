@@ -20,7 +20,7 @@ export default function Navbar() {
 
   return (
     <nav
-      className="fixed top-0 left-0 right-0 z-50 px-8 py-5 flex items-center justify-between transition-all duration-500"
+      className="fixed top-0 left-0 right-0 z-50 px-4 md:px-8 py-5 flex items-center justify-between transition-all duration-500"
       style={{
         background: scrolled ? "rgba(247,245,240,0.95)" : "transparent",
         backdropFilter: scrolled ? "blur(12px)" : "none",
@@ -35,7 +35,7 @@ export default function Navbar() {
         Faithful
       </Link>
 
-      <div className="flex items-center gap-8">
+      <div className="flex items-center gap-4 md:gap-8">
         <Link href="/products" className="text-xs tracking-[0.2em] uppercase transition-colors duration-300" style={{ color: textColor }}>
           {t.boutique}
         </Link>
