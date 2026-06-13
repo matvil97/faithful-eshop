@@ -59,7 +59,7 @@ export default function AnimatedHero() {
         transition={{ duration: 0.8, ease, delay: 0.7 }}
       >
         Des vêtements qui portent ta foi — conçus pour rappeler, chaque jour,
-        que tu es habillé·e de quelque chose de plus grand.
+        que tu es revêtu·e de quelque chose de plus grand.
       </motion.p>
 
       <motion.div
