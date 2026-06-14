@@ -5,7 +5,7 @@ import Image from "next/image";
 import { useCart } from "@/context/CartContext";
 import { useLang } from "@/context/LanguageContext";
 import { Product, ProductVariant } from "@/lib/api";
-import { getLocalImages } from "@/lib/localImages";
+import { getLocalImages, getLocalName, getDefaultColor } from "@/lib/localImages";
 
 const COLOR_HEX: Record<string, string> = {
   "Black": "#1c1c1c",
@@ -46,7 +46,11 @@ export default function ProductCard({ product }: { product: Product }) {
   const { t, tColor } = useLang();
 
   const colorVariants = [...new Map(variants.map((v) => [getColorName(v), v])).values()];
-  const [colorIdx, setColorIdx] = useState(0);
+  const preferredColor = getDefaultColor(product.id);
+  const initialColorIdx = preferredColor
+    ? Math.max(0, colorVariants.findIndex((v) => getColorName(v) === preferredColor))
+    : 0;
+  const [colorIdx, setColorIdx] = useState(initialColorIdx);
   const [imgIdx, setImgIdx] = useState(0);
   const [added, setAdded] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
@@ -60,6 +64,7 @@ export default function ProductCard({ product }: { product: Product }) {
   const localImgs = getLocalImages(product.id, rawColor);
   const images = localImgs ?? getPrintfulImages(selectedColor, product.thumbnail_url);
   const isLocal = !!localImgs;
+  const displayName = getLocalName(product.id) ?? product.name;
 
   const hoverInterval = useRef<ReturnType<typeof setInterval> | null>(null);
   const cardRef = useRef<HTMLDivElement>(null);
@@ -115,7 +120,7 @@ export default function ProductCard({ product }: { product: Product }) {
     ? "0 24px 48px rgba(0,0,0,0.18)"
     : isHovered
     ? "0 14px 32px rgba(0,0,0,0.12)"
-    : "none";
+    : "0 2px 8px rgba(0,0,0,0.06)";
 
   return (
     <div
@@ -124,8 +129,10 @@ export default function ProductCard({ product }: { product: Product }) {
       style={{
         transform: `perspective(1000px) translateZ(${translateZ}px)`,
         boxShadow: shadow,
+        border: "1px solid #e2ddd6",
         transition: "transform 300ms ease, box-shadow 300ms ease",
         willChange: "transform",
+        padding: "0 0 12px 0",
       }}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
@@ -135,7 +142,7 @@ export default function ProductCard({ product }: { product: Product }) {
       {/* ── IMAGE ── */}
       <div
         className="relative overflow-hidden"
-        style={{ aspectRatio: "3/4", border: "1px solid #e2ddd6", background: "#faf9f7" }}
+        style={{ aspectRatio: "3/4", background: "#faf9f7" }}
       >
         {/* Images avec crossfade */}
         {images.map((src, i) => (
@@ -252,11 +259,11 @@ export default function ProductCard({ product }: { product: Product }) {
       </div>
 
       {/* ── INFOS ── */}
-      <div className="mt-3 flex justify-between items-baseline">
-        <p className="text-sm font-medium text-stone-800">{product.name}</p>
+      <div className="mt-3 px-3 flex justify-between items-baseline">
+        <p className="text-sm font-medium text-stone-800">{displayName}</p>
         <p className="text-sm font-semibold text-stone-900">€{selectedSize.retail_price}</p>
       </div>
-      <p className="text-xs text-stone-400 mt-0.5 tracking-wide">{tColor(rawColor)}</p>
+      <p className="text-xs text-stone-400 mt-0.5 px-3 tracking-wide">{tColor(rawColor)}</p>
     </div>
   );
 }

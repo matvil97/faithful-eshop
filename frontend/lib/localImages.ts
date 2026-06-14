@@ -1,5 +1,14 @@
 const P = "/products";
 
+export const NAME_OVERRIDES: Record<number, string> = {
+  439033673: "Tshirt oversize Faithful pour femme",
+  439033624: "Hoodie Faithful King of Kings",
+};
+
+export function getLocalName(productId: number): string | null {
+  return NAME_OVERRIDES[productId] ?? null;
+}
+
 export const LOCAL_IMAGES: Record<number, Record<string, string[]>> = {
   // "Tshirt Faithful" (staple) — ID Printful 439033692
   439033692: {
@@ -12,14 +21,10 @@ export const LOCAL_IMAGES: Record<number, Record<string, string[]>> = {
       `${P}/tshirt-black-heather-mockup-front-back.png`,
     ],
     Ash: [
-      `${P}/tshirt-ash-model-front-1.png`,
-      `${P}/tshirt-ash-model-front-2.png`,
-      `${P}/tshirt-ash-model-front-3.png`,
-      `${P}/tshirt-ash-mockup-front.png`,
-      `${P}/tshirt-ash-mockup-right-front.png`,
-      `${P}/tshirt-ash-model-back-1.png`,
-      `${P}/tshirt-ash-model-back-2.png`,
-      `${P}/tshirt-ash-model-side.png`,
+      `${P}/unisex-staple-t-shirt-ash-right-front-6a2d826ba16b2.png`,
+      `${P}/unisex-staple-t-shirt-ash-right-front-6a2d826c013d4.png`,
+      `${P}/unisex-staple-t-shirt-ash-right-front-6a2d826e689db.png`,
+      `${P}/unisex-staple-t-shirt-ash-back-6a2d826d369fe.png`,
     ],
     "Heather Ice Blue": [
       `${P}/tshirt-ice-blue-model-front-1.png`,
@@ -60,45 +65,43 @@ export const LOCAL_IMAGES: Record<number, Record<string, string[]>> = {
   // "Hoodie Faith" — ID Printful 439033624
   439033624: {
     Black: [
-      `${P}/hoodie-black-model-front-1.png`,
-      `${P}/hoodie-black-model-front-2.png`,
-      `${P}/hoodie-black-model-back-1.png`,
+      `${P}/unisex-premium-pullover-hoodie-black-front-6a2e98e2a8a44.png`,
+      `${P}/unisex-premium-pullover-hoodie-black-front-6a2e98e2b1e2e.png`,
+      `${P}/unisex-premium-pullover-hoodie-black-back-6a2e98e2c7f9a.png`,
+      `${P}/unisex-premium-pullover-hoodie-black-back-6a2e98e2ca588.png`,
+      `${P}/unisex-premium-pullover-hoodie-black-back-6a2e98e2d40ae.png`,
+      `${P}/unisex-premium-pullover-hoodie-black-back-6a2e98e2d5ff7.png`,
     ],
     "Carolina Blue": [
-      `${P}/hoodie-carolina-blue-model-front-1.png`,
-      `${P}/hoodie-carolina-blue-model-front-2.png`,
-      `${P}/hoodie-carolina-blue-model-back-1.png`,
-      `${P}/hoodie-carolina-blue-model-back-2.png`,
+      `${P}/unisex-premium-pullover-hoodie-carolina-blue-front-6a2e98e31074b.png`,
+      `${P}/unisex-premium-pullover-hoodie-carolina-blue-front-6a2e98e3bffdd.png`,
+      `${P}/unisex-premium-pullover-hoodie-carolina-blue-front-6a2e98e3c9173.png`,
+      `${P}/unisex-premium-pullover-hoodie-carolina-blue-back-6a2e98e33ec45.png`,
+      `${P}/unisex-premium-pullover-hoodie-carolina-blue-back-6a2e98e345b87.png`,
+      `${P}/unisex-premium-pullover-hoodie-carolina-blue-back-6a2e98e365a8c.png`,
     ],
     White: [
-      `${P}/hoodie-white-model-front-1.png`,
-      `${P}/hoodie-white-model-front-2.png`,
-      `${P}/hoodie-white-model-back-1.png`,
+      `${P}/unisex-premium-pullover-hoodie-white-front-6a2e98e3dd797.png`,
+      `${P}/unisex-premium-pullover-hoodie-white-front-6a2e98e402675.png`,
+      `${P}/unisex-premium-pullover-hoodie-white-front-6a2e98e551bd1.png`,
+      `${P}/unisex-premium-pullover-hoodie-white-back-6a2e98e4b0d7b.png`,
+      `${P}/unisex-premium-pullover-hoodie-white-back-6a2e98e4c1bc2.png`,
+      `${P}/unisex-premium-pullover-hoodie-white-back-6a2e98e4d0587.png`,
     ],
   },
 
   // "Tshirt oversized Faithful" — ID Printful 439033673
   439033673: {
     Black: [
-      `${P}/t_shirt2_1face.png`,
-      `${P}/t_shirt2_2face.png`,
-      `${P}/tshirt1_1back.png`,
-      `${P}/tshirt1_2back.png`,
+      `${P}/unisex-organic-oversized-high-neck-blaster-2.0-t-shirt-black-front-2-6a2d7b4f44636.png`,
       `${P}/unisex-organic-oversized-high-neck-blaster-2.0-t-shirt-black-back-6a2d7b4f41b2e.png`,
-      `${P}/unisex-organic-oversized-high-neck-blaster-2.0-t-shirt-black-left-6a2d7b4f43e51.png`,
     ],
     Stone: [
-      `${P}/t_face3_1.png`,
-      `${P}/t_face3.png`,
-      `${P}/t_back3.png`,
-      `${P}/t_back3_1.png`,
+      `${P}/unisex-organic-oversized-high-neck-blaster-2.0-t-shirt-stone-front-2-6a2d7b4f4a795.png`,
       `${P}/unisex-organic-oversized-high-neck-blaster-2.0-t-shirt-stone-back-6a2d7b4f448e1.png`,
     ],
     White: [
-      `${P}/t_face4_1.png`,
-      `${P}/t_face4.png`,
-      `${P}/t_back4.png`,
-      `${P}/t_back4_1.png`,
+      `${P}/unisex-organic-oversized-high-neck-blaster-2.0-t-shirt-white-front-2-6a2d7b4f547ec.png`,
       `${P}/unisex-organic-oversized-high-neck-blaster-2.0-t-shirt-white-back-6a2d7b4f4ad97.png`,
     ],
   },
@@ -106,4 +109,12 @@ export const LOCAL_IMAGES: Record<number, Record<string, string[]>> = {
 
 export function getLocalImages(productId: number, colorName: string): string[] | null {
   return LOCAL_IMAGES[productId]?.[colorName] ?? null;
+}
+
+const DEFAULT_COLOR: Record<number, string> = {
+  439033624: "White",
+};
+
+export function getDefaultColor(productId: number): string | null {
+  return DEFAULT_COLOR[productId] ?? null;
 }
