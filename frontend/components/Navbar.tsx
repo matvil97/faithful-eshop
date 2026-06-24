@@ -35,12 +35,12 @@ export default function Navbar() {
         Faithful
       </Link>
 
-      <div className="flex items-center gap-4 md:gap-8">
+      <div className="flex items-center gap-3 md:gap-8">
         <Link href="/products" className="text-xs tracking-[0.2em] uppercase transition-colors duration-300" style={{ color: textColor }}>
           {t.boutique}
         </Link>
 
-        <Link href="/inspiration" className="text-xs tracking-[0.2em] uppercase transition-colors duration-300" style={{ color: textColor }}>
+        <Link href="/inspiration" className="hidden md:inline text-xs tracking-[0.2em] uppercase transition-colors duration-300" style={{ color: textColor }}>
           {t.inspiration}
         </Link>
 
