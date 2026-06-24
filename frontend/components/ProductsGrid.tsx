@@ -10,7 +10,7 @@ const CATEGORY_IDS: Record<string, number[] | null> = {
   tout: null,
   tshirts: [24, 58],
   hoodies: [28],
-  accessoires: [195, 41],
+  accessoires: [195, 41, 46, 48, 244],
 };
 
 export default function ProductsGrid({ products }: { products: Product[] }) {
