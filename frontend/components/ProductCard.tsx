@@ -87,7 +87,7 @@ export default function ProductCard({ product }: { product: Product }) {
     if (images.length <= 1) return;
     hoverInterval.current = setInterval(() => {
       setImgIdx((i) => (i + 1) % images.length);
-    }, 750);
+    }, 2000);
   }
 
   function handleMouseLeave() {
