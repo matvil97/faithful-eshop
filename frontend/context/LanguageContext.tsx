@@ -9,6 +9,7 @@ const T = {
     // Navbar
     boutique: "Boutique",
     panier: "Panier",
+    inspiration: "Inspiration",
 
     // Products page header
     collection: "Collection 2026",
@@ -60,6 +61,8 @@ const T = {
       "Carolina Blue": "Bleu carolina",
       Asphalt: "Gris anthracite",
       Navy: "Marine",
+      Grey: "Gris",
+      Khaki: "Kaki",
       Red: "Rouge",
       "Forest Green": "Vert forêt",
       Olive: "Olive",
@@ -74,6 +77,7 @@ const T = {
   en: {
     boutique: "Shop",
     panier: "Cart",
+    inspiration: "Inspiration",
     collection: "Collection 2026",
     laBoutique: "The Shop",
     tout: "All",

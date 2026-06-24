@@ -40,6 +40,10 @@ export default function Navbar() {
           {t.boutique}
         </Link>
 
+        <Link href="/inspiration" className="text-xs tracking-[0.2em] uppercase transition-colors duration-300" style={{ color: textColor }}>
+          {t.inspiration}
+        </Link>
+
         <Link href="/cart" className="relative text-xs tracking-[0.2em] uppercase transition-colors duration-300" style={{ color: textColor }}>
           {t.panier}
           {count > 0 && (

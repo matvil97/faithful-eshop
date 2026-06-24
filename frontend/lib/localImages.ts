@@ -10,6 +10,36 @@ export function getLocalName(productId: number): string | null {
 }
 
 export const LOCAL_IMAGES: Record<number, Record<string, string[]>> = {
+  // "Bob Faithful edition summer" — ID Printful 441875248
+  441875248: {
+    Black: [
+      `${P}/bucket-hat-black-front-6a3ba0d2d75f7.png`,
+      `${P}/bucket-hat-black-front-6a3ba0d2d7a04.png`,
+      `${P}/bucket-hat-black-front-6a3ba0d2d7c64.png`,
+    ],
+    Navy: [
+      `${P}/bucket-hat-navy-front-6a3ba0d2d77c1.png`,
+      `${P}/bucket-hat-navy-front-6a3ba0d2d7aa5.png`,
+      `${P}/bucket-hat-navy-front-6a3ba0d2d7d05.png`,
+    ],
+    Grey: [
+      `${P}/bucket-hat-grey-front-6a3ba0d2d7750.png`,
+      `${P}/bucket-hat-grey-front-6a3ba0d2d7a4d.png`,
+      `${P}/bucket-hat-grey-front-6a3ba0d2d7ca9.png`,
+    ],
+    Khaki: [
+      `${P}/bucket-hat-khaki-front-6a3ba0d2d7791.png`,
+      `${P}/bucket-hat-khaki-front-6a3ba0d2d7a7b.png`,
+      `${P}/bucket-hat-khaki-front-6a3ba0d2d7cd8.png`,
+    ],
+    White: [
+      `${P}/bucket-hat-white-front-6a3ba0d2d77f8.png`,
+      `${P}/bucket-hat-white-front-6a3ba0d2d7ad0.png`,
+      `${P}/bucket-hat-white-front-6a3ba0d2d7d31.png`,
+    ],
+  },
+
+
   // "Tshirt Faithful" (staple) — ID Printful 439033692
   439033692: {
     "Black Heather": [

@@ -4,6 +4,7 @@ import { useState } from "react";
 import Image from "next/image";
 import { useCart } from "@/context/CartContext";
 import { Product, ProductVariant } from "@/lib/api";
+import { getComingSoon } from "@/lib/productConfig";
 
 const FIXED_PRICE = "39.99";
 
@@ -19,12 +20,14 @@ function getVariantImage(variant: ProductVariant, thumbnail: string): string {
 
 function getColorName(variant: ProductVariant): string {
   const parts = variant.name.split(" / ");
-  return parts.length > 1 ? parts[parts.length - 2] : parts[0];
+  if (parts.length >= 3) return parts[parts.length - 2];
+  if (parts.length === 2) return parts[1];
+  return parts[0];
 }
 
 function getSizeName(variant: ProductVariant): string {
   const parts = variant.name.split(" / ");
-  return parts[parts.length - 1];
+  return parts.length >= 3 ? parts[parts.length - 1] : "One Size";
 }
 
 export default function ProductDetail({ product }: { product: Product }) {
@@ -51,6 +54,7 @@ export default function ProductDetail({ product }: { product: Product }) {
   }
 
   const mainImage = getVariantImage(selectedColor, product.thumbnail_url);
+  const comingSoon = getComingSoon(product.id);
 
   function handlePrev() {
     handleColorSelect((activeIndex - 1 + colorVariants.length) % colorVariants.length);
@@ -167,12 +171,26 @@ export default function ProductDetail({ product }: { product: Product }) {
             </div>
           </div>
 
-          <button
-            onClick={handleAddToCart}
-            className="w-full bg-black text-white py-4 rounded-full text-sm font-semibold hover:bg-gray-800 transition-colors mt-2"
-          >
-            Ajouter au panier — €{FIXED_PRICE}
-          </button>
+          {comingSoon ? (
+            <div className="w-full mt-2">
+              <div
+                className="w-full py-4 text-center text-sm tracking-widest uppercase"
+                style={{ background: "#f0ebe2", color: "#78716c", border: "1px solid #e2ddd6" }}
+              >
+                Bientôt disponible — {comingSoon}
+              </div>
+              <p className="text-xs text-stone-400 text-center mt-3">
+                Ce produit sera disponible en {comingSoon}. Reviens vite !
+              </p>
+            </div>
+          ) : (
+            <button
+              onClick={handleAddToCart}
+              className="w-full bg-black text-white py-4 rounded-full text-sm font-semibold hover:bg-gray-800 transition-colors mt-2"
+            >
+              Ajouter au panier — €{FIXED_PRICE}
+            </button>
+          )}
 
           <p className="text-xs text-gray-400 text-center">
             Livraison estimée sous 5–10 jours ouvrés · Produit à la commande

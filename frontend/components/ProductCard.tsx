@@ -6,6 +6,7 @@ import { useCart } from "@/context/CartContext";
 import { useLang } from "@/context/LanguageContext";
 import { Product, ProductVariant } from "@/lib/api";
 import { getLocalImages, getLocalName, getDefaultColor } from "@/lib/localImages";
+import { getComingSoon } from "@/lib/productConfig";
 
 const COLOR_HEX: Record<string, string> = {
   "Black": "#1c1c1c",
@@ -16,6 +17,9 @@ const COLOR_HEX: Record<string, string> = {
   "Light Blue": "#a4c4d8",
   "Heather Ice Blue": "#b2d4da",
   "Carolina Blue": "#88b4d2",
+  "Navy": "#1e3a5f",
+  "Grey": "#8a8a8a",
+  "Khaki": "#bba96a",
 };
 
 function getPrintfulImages(variant: ProductVariant, thumbnail: string): string[] {
@@ -33,11 +37,13 @@ function getPrintfulImages(variant: ProductVariant, thumbnail: string): string[]
 
 function getColorName(v: ProductVariant) {
   const p = v.name.split(" / ");
-  return p.length > 1 ? p[p.length - 2] : p[0];
+  if (p.length >= 3) return p[p.length - 2];
+  if (p.length === 2) return p[1];
+  return p[0];
 }
 function getSizeName(v: ProductVariant) {
   const p = v.name.split(" / ");
-  return p[p.length - 1];
+  return p.length >= 3 ? p[p.length - 1] : "One Size";
 }
 
 export default function ProductCard({ product }: { product: Product }) {
@@ -65,6 +71,7 @@ export default function ProductCard({ product }: { product: Product }) {
   const images = localImgs ?? getPrintfulImages(selectedColor, product.thumbnail_url);
   const isLocal = !!localImgs;
   const displayName = getLocalName(product.id) ?? product.name;
+  const comingSoon = getComingSoon(product.id);
 
   const hoverInterval = useRef<ReturnType<typeof setInterval> | null>(null);
   const cardRef = useRef<HTMLDivElement>(null);
@@ -161,6 +168,16 @@ export default function ProductCard({ product }: { product: Product }) {
           />
         ))}
 
+        {/* Badge bientôt disponible */}
+        {comingSoon && (
+          <div
+            className="absolute top-3 right-3 z-20 px-3 py-1 text-[10px] tracking-widest uppercase"
+            style={{ background: "#1a1a1a", color: "#f0ebe2" }}
+          >
+            Bientôt — {comingSoon}
+          </div>
+        )}
+
         {/* Dots de navigation */}
         {images.length > 1 && (
           <div className="absolute bottom-3 left-3 flex gap-1 z-10">
@@ -240,21 +257,37 @@ export default function ProductCard({ product }: { product: Product }) {
           )}
 
           {/* Bouton ajouter au panier */}
-          <button
-            onClick={handleAddToCart}
-            className="w-full transition-all"
-            style={{
-              padding: "9px 0",
-              fontSize: 10,
-              letterSpacing: "0.12em",
-              textTransform: "uppercase",
-              fontWeight: 500,
-              background: added ? "#3a3a3a" : "#fff",
-              color: added ? "#888" : "#111",
-            }}
-          >
-            {added ? t.ajoute : t.ajouterPanier}
-          </button>
+          {comingSoon ? (
+            <div
+              className="w-full text-center"
+              style={{
+                padding: "9px 0",
+                fontSize: 10,
+                letterSpacing: "0.12em",
+                textTransform: "uppercase",
+                fontWeight: 500,
+                color: "#aaa",
+              }}
+            >
+              Disponible en {comingSoon}
+            </div>
+          ) : (
+            <button
+              onClick={handleAddToCart}
+              className="w-full transition-all"
+              style={{
+                padding: "9px 0",
+                fontSize: 10,
+                letterSpacing: "0.12em",
+                textTransform: "uppercase",
+                fontWeight: 500,
+                background: added ? "#3a3a3a" : "#fff",
+                color: added ? "#888" : "#111",
+              }}
+            >
+              {added ? t.ajoute : t.ajouterPanier}
+            </button>
+          )}
         </div>
       </div>
 
