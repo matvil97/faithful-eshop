@@ -9,7 +9,7 @@ const T = {
     // Navbar
     boutique: "Boutique",
     panier: "Panier",
-    inspiration: "Inspiration",
+    inspiration: "Parole",
 
     // Products page header
     collection: "Collection 2026",
