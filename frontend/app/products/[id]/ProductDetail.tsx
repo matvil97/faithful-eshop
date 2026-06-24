@@ -18,16 +18,23 @@ function getVariantImage(variant: ProductVariant, thumbnail: string): string {
   return any?.preview_url ?? thumbnail;
 }
 
+const KNOWN_COLORS = new Set([
+  "Black", "Black Heather", "White", "Ash", "Stone", "Light Blue",
+  "Heather Ice Blue", "Carolina Blue", "Navy", "Grey", "Khaki", "Red", "Yellow",
+]);
+
 function getColorName(variant: ProductVariant): string {
   const parts = variant.name.split(" / ");
   if (parts.length >= 3) return parts[parts.length - 2];
-  if (parts.length === 2) return parts[1];
+  if (parts.length === 2 && KNOWN_COLORS.has(parts[1])) return parts[1];
   return parts[0];
 }
 
 function getSizeName(variant: ProductVariant): string {
   const parts = variant.name.split(" / ");
-  return parts.length >= 3 ? parts[parts.length - 1] : "One Size";
+  if (parts.length >= 3) return parts[parts.length - 1];
+  if (parts.length === 2 && !KNOWN_COLORS.has(parts[1])) return parts[1];
+  return "One Size";
 }
 
 export default function ProductDetail({ product }: { product: Product }) {

@@ -76,13 +76,15 @@ export const LOCAL_IMAGES: Record<number, Record<string, string[]>> = {
 
   // "Casquette Faithful" — ID Printful 439140231
   439140231: {
-    "Casquette Faithful": [
+    Black: [
       `${P}/snapback-black-mockup-front.png`,
       `${P}/snapback-black-mockup-left-front.png`,
       `${P}/snapback-black-mockup-right-front.png`,
       `${P}/snapback-black-mockup-left-side.png`,
       `${P}/snapback-black-mockup-right-side.png`,
       `${P}/snapback-black-mockup-back.png`,
+    ],
+    White: [
       `${P}/snapback-white-mockup-front.png`,
       `${P}/snapback-white-mockup-left-front.png`,
       `${P}/snapback-white-mockup-right-front.png`,

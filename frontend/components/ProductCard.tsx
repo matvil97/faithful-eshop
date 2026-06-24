@@ -20,7 +20,11 @@ const COLOR_HEX: Record<string, string> = {
   "Navy": "#1e3a5f",
   "Grey": "#8a8a8a",
   "Khaki": "#bba96a",
+  "Red": "#c0392b",
+  "Yellow": "#d4ac0d",
 };
+
+const KNOWN_COLORS = new Set(Object.keys(COLOR_HEX));
 
 function getPrintfulImages(variant: ProductVariant, thumbnail: string): string[] {
   const priority = ["mockup", "preview", "front_large", "back"];
@@ -38,12 +42,14 @@ function getPrintfulImages(variant: ProductVariant, thumbnail: string): string[]
 function getColorName(v: ProductVariant) {
   const p = v.name.split(" / ");
   if (p.length >= 3) return p[p.length - 2];
-  if (p.length === 2) return p[1];
+  if (p.length === 2 && KNOWN_COLORS.has(p[1])) return p[1];
   return p[0];
 }
 function getSizeName(v: ProductVariant) {
   const p = v.name.split(" / ");
-  return p.length >= 3 ? p[p.length - 1] : "One Size";
+  if (p.length >= 3) return p[p.length - 1];
+  if (p.length === 2 && !KNOWN_COLORS.has(p[1])) return p[1];
+  return "One Size";
 }
 
 export default function ProductCard({ product }: { product: Product }) {
