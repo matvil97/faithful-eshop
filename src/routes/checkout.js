@@ -34,10 +34,21 @@ router.post("/session", async (req, res) => {
           shipping_rate_data: {
             type: "fixed_amount",
             fixed_amount: { amount: 0, currency: "eur" },
-            display_name: "Livraison standard",
+            display_name: "Livraison standard — France métropolitaine",
             delivery_estimate: {
               minimum: { unit: "business_day", value: 5 },
               maximum: { unit: "business_day", value: 10 },
+            },
+          },
+        },
+        {
+          shipping_rate_data: {
+            type: "fixed_amount",
+            fixed_amount: { amount: 699, currency: "eur" },
+            display_name: "Livraison DOM-TOM (Antilles, Réunion, Guyane, Mayotte)",
+            delivery_estimate: {
+              minimum: { unit: "business_day", value: 10 },
+              maximum: { unit: "business_day", value: 20 },
             },
           },
         },
