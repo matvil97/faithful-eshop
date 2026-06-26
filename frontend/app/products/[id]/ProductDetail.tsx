@@ -155,6 +155,7 @@ export default function ProductDetail({ product }: { product: Product }) {
           </div>
 
           <p className="text-3xl font-semibold text-gray-900">€{FIXED_PRICE}</p>
+          <p className="text-xs text-stone-400 -mt-3">Livraison offerte · +6,99€ DOM-TOM</p>
 
           {/* Tailles */}
           <div className="space-y-3">

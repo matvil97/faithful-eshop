@@ -303,6 +303,7 @@ export default function ProductCard({ product }: { product: Product }) {
         <p className="text-sm font-semibold text-stone-900">€{selectedSize.retail_price}</p>
       </div>
       <p className="text-xs text-stone-400 mt-0.5 px-3 tracking-wide">{tColor(rawColor)}</p>
+      <p className="text-[10px] text-stone-300 mt-1 px-3 tracking-wide">Livraison offerte · +6,99€ DOM-TOM</p>
     </div>
   );
 }
