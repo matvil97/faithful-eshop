@@ -27,7 +27,7 @@ router.post("/session", async (req, res) => {
       mode: "payment",
       line_items,
       shipping_address_collection: {
-        allowed_countries: ["FR", "BE", "CH", "LU", "DE", "GB", "US", "CA"],
+        allowed_countries: ["FR", "BE", "CH", "LU", "DE", "GB", "US", "CA", "MQ", "GP", "RE", "GF", "YT"],
       },
       shipping_options: [
         {
