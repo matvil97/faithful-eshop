@@ -7,6 +7,7 @@ import { LanguageProvider } from "@/context/LanguageContext";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import CookieBanner from "@/components/CookieBanner";
+import { Analytics } from "@vercel/analytics/next";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -39,6 +40,7 @@ export default function RootLayout({
             <main className="flex-1">{children}</main>
             <Footer />
             <CookieBanner />
+            <Analytics />
           </CartProvider>
         </LanguageProvider>
       </body>
