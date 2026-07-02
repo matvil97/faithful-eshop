@@ -23,10 +23,15 @@ async function handleStripeWebhook(req, res) {
       const shipping = session.shipping_details;
       const items = JSON.parse(session.metadata.items);
 
+      if (!shipping?.name || !shipping?.address) {
+        console.error("[Webhook] Adresse de livraison manquante — session:", session.id);
+        return res.json({ received: true });
+      }
+
       await createOrder({
         recipient: {
           name: shipping.name,
-          email: session.customer_details.email,
+          email: session.customer_details?.email || "",
           address1: shipping.address.line1,
           address2: shipping.address.line2 || "",
           city: shipping.address.city,
