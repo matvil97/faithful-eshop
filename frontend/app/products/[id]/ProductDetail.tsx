@@ -5,7 +5,7 @@ import Image from "next/image";
 import { useCart } from "@/context/CartContext";
 import { Product, ProductVariant } from "@/lib/api";
 import { getComingSoon } from "@/lib/productConfig";
-import { getLocalImages } from "@/lib/localImages";
+import { getLocalImages, getDefaultColor } from "@/lib/localImages";
 
 const FIXED_PRICE = "39.99";
 
@@ -45,7 +45,11 @@ export default function ProductDetail({ product }: { product: Product }) {
   // One representative variant per color (for the carousel)
   const colorVariants = [...new Map(variants.map((v) => [getColorName(v), v])).values()];
 
-  const [activeIndex, setActiveIndex] = useState(0);
+  const preferredColor = getDefaultColor(product.id);
+  const initialIndex = preferredColor
+    ? Math.max(0, colorVariants.findIndex((v) => getColorName(v) === preferredColor))
+    : 0;
+  const [activeIndex, setActiveIndex] = useState(initialIndex);
   const selectedColor = colorVariants[activeIndex];
   const rawColor = getColorName(selectedColor);
 

@@ -12,7 +12,7 @@ const T = {
     inspiration: "Parole",
 
     // Products page header
-    collection: "Collection 2026",
+    collection: "Collection Summer 2026",
     laBoutique: "La Boutique",
 
     // Filters
@@ -20,7 +20,6 @@ const T = {
     tshirts: "Vêtements",
     hoodies: "Hoodies",
     accessoires: "Accessoires",
-    summer: "Collection Summer",
     aucunProduit: "Aucun produit dans cette catégorie.",
 
     // ProductCard
@@ -81,13 +80,12 @@ const T = {
     boutique: "Shop",
     panier: "Cart",
     inspiration: "Inspiration",
-    collection: "Collection 2026",
+    collection: "Summer Collection 2026",
     laBoutique: "The Shop",
     tout: "All",
     tshirts: "Clothing",
     hoodies: "Hoodies",
     accessoires: "Accessories",
-    summer: "Summer Collection",
     aucunProduit: "No products in this category.",
     voirDesign: "View design",
     vueFace: "Front view",

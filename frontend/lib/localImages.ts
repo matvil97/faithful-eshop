@@ -125,24 +125,24 @@ export const LOCAL_IMAGES: Record<number, Record<string, string[]>> = {
   // "Tshirt oversized Faithful" — ID Printful 439033673
   439033673: {
     Black: [
+      `${P}/unisex-organic-oversized-high-neck-blaster-2.0-t-shirt-black-back-6a46804422d99.png`,
       `${P}/unisex-organic-oversized-high-neck-blaster-2.0-t-shirt-black-front-2-6a46804423655.png`,
       `${P}/unisex-organic-oversized-high-neck-blaster-2.0-t-shirt-black-back-6a46804423214.png`,
       `${P}/unisex-organic-oversized-high-neck-blaster-2.0-t-shirt-black-front-6a46804422f06.png`,
-      `${P}/unisex-organic-oversized-high-neck-blaster-2.0-t-shirt-black-back-6a46804422d99.png`,
       `${P}/unisex-organic-oversized-high-neck-blaster-2.0-t-shirt-black-back-6a46804422918.png`,
     ],
     Stone: [
+      `${P}/unisex-organic-oversized-high-neck-blaster-2.0-t-shirt-stone-back-6a46804426767.png`,
       `${P}/unisex-organic-oversized-high-neck-blaster-2.0-t-shirt-stone-front-2-6a468044280e2.png`,
       `${P}/unisex-organic-oversized-high-neck-blaster-2.0-t-shirt-stone-back-6a468044277fb.png`,
       `${P}/unisex-organic-oversized-high-neck-blaster-2.0-t-shirt-stone-front-6a46804426d39.png`,
-      `${P}/unisex-organic-oversized-high-neck-blaster-2.0-t-shirt-stone-back-6a46804426767.png`,
       `${P}/unisex-organic-oversized-high-neck-blaster-2.0-t-shirt-stone-back-6a46804425e0a.png`,
     ],
     White: [
+      `${P}/unisex-organic-oversized-high-neck-blaster-2.0-t-shirt-white-back-6a4680442b707.png`,
       `${P}/unisex-organic-oversized-high-neck-blaster-2.0-t-shirt-white-front-2-6a4680442ce1e.png`,
       `${P}/unisex-organic-oversized-high-neck-blaster-2.0-t-shirt-white-back-6a4680442c4a7.png`,
       `${P}/unisex-organic-oversized-high-neck-blaster-2.0-t-shirt-white-front-6a4680442bba2.png`,
-      `${P}/unisex-organic-oversized-high-neck-blaster-2.0-t-shirt-white-back-6a4680442b707.png`,
       `${P}/unisex-organic-oversized-high-neck-blaster-2.0-t-shirt-white-back-6a4680442a9c0.png`,
     ],
   },
@@ -166,6 +166,8 @@ export function getLocalImages(productId: number, colorName: string): string[] |
 
 const DEFAULT_COLOR: Record<number, string> = {
   439033624: "White",
+  441875248: "White",
+  439033673: "White",
 };
 
 export function getDefaultColor(productId: number): string | null {
