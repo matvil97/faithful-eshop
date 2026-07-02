@@ -15,12 +15,21 @@ async function handleStripeWebhook(req, res) {
   }
 
   if (event.type === "checkout.session.completed") {
-    const session = event.data.object;
+    const rawSession = event.data.object;
 
-    if (session.payment_status !== "paid") return res.json({ received: true });
+    if (rawSession.payment_status !== "paid") return res.json({ received: true });
 
     try {
-      const shipping = session.shipping_details;
+      // Récupère la session complète pour avoir tous les champs
+      const session = await stripe.checkout.sessions.retrieve(rawSession.id);
+
+      // Stripe API récente : shipping sous collected_information ou shipping_details
+      const shipping =
+        session.collected_information?.shipping_details ||
+        session.shipping_details;
+
+      console.log("[Webhook] shipping_details:", JSON.stringify(shipping));
+
       const items = JSON.parse(session.metadata.items);
 
       if (!shipping?.name || !shipping?.address) {
