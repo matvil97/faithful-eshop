@@ -20,6 +20,7 @@ const T = {
     tshirts: "Vêtements",
     hoodies: "Hoodies",
     accessoires: "Accessoires",
+    summer: "Collection Summer",
     aucunProduit: "Aucun produit dans cette catégorie.",
 
     // ProductCard
@@ -72,6 +73,8 @@ const T = {
       Brown: "Marron",
       Natural: "Naturel",
       Heather: "Chiné",
+      "Faded Bone": "Ivoire délavé",
+      "Faded Khaki": "Kaki délavé",
     } as Record<string, string>,
   },
   en: {
@@ -84,6 +87,7 @@ const T = {
     tshirts: "Clothing",
     hoodies: "Hoodies",
     accessoires: "Accessories",
+    summer: "Summer Collection",
     aucunProduit: "No products in this category.",
     voirDesign: "View design",
     vueFace: "Front view",

@@ -4,6 +4,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { Product } from "@/lib/api";
 import { useLang } from "@/context/LanguageContext";
+import { isSummerCollection } from "@/lib/productConfig";
 import ProductCard from "./ProductCard";
 
 const CATEGORY_IDS: Record<string, number[] | null> = {
@@ -22,10 +23,13 @@ export default function ProductsGrid({ products }: { products: Product[] }) {
     { key: "tshirts", label: t.tshirts },
     { key: "hoodies", label: t.hoodies },
     { key: "accessoires", label: t.accessoires },
+    { key: "summer", label: t.summer },
   ];
 
   const filtered =
-    CATEGORY_IDS[activeKey] === null
+    activeKey === "summer"
+      ? products.filter((p) => isSummerCollection(p.id))
+      : CATEGORY_IDS[activeKey] === null
       ? products
       : products.filter((p) => CATEGORY_IDS[activeKey]?.includes(p.category_id));
 

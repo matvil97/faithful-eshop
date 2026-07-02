@@ -1,10 +1,11 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import { useCart } from "@/context/CartContext";
 import { Product, ProductVariant } from "@/lib/api";
 import { getComingSoon } from "@/lib/productConfig";
+import { getLocalImages } from "@/lib/localImages";
 
 const FIXED_PRICE = "39.99";
 
@@ -46,21 +47,27 @@ export default function ProductDetail({ product }: { product: Product }) {
 
   const [activeIndex, setActiveIndex] = useState(0);
   const selectedColor = colorVariants[activeIndex];
+  const rawColor = getColorName(selectedColor);
 
   const sizesForColor = variants.filter(
-    (v) => getColorName(v) === getColorName(selectedColor)
+    (v) => getColorName(v) === rawColor
   );
   const [selectedSize, setSelectedSize] = useState<ProductVariant>(sizesForColor[0]);
 
   function handleColorSelect(index: number) {
     setActiveIndex(index);
+    setAngleIndex(0);
     const newSizes = variants.filter(
       (v) => getColorName(v) === getColorName(colorVariants[index])
     );
     setSelectedSize(newSizes[0]);
   }
 
-  const mainImage = getVariantImage(selectedColor, product.thumbnail_url);
+  const localAngleImages = getLocalImages(product.id, rawColor);
+  const angleImages = localAngleImages ?? [getVariantImage(selectedColor, product.thumbnail_url)];
+  const [angleIndex, setAngleIndex] = useState(0);
+  useEffect(() => setAngleIndex(0), [rawColor]);
+  const mainImage = angleImages[angleIndex] ?? angleImages[0];
   const comingSoon = getComingSoon(product.id);
 
   function handlePrev() {
@@ -102,6 +109,24 @@ export default function ProductDetail({ product }: { product: Product }) {
               className="object-contain"
               priority
             />
+            {/* Points de navigation entre les angles (face / dos...) */}
+            {angleImages.length > 1 && (
+              <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5 z-10">
+                {angleImages.map((_, i) => (
+                  <button
+                    key={i}
+                    onClick={() => setAngleIndex(i)}
+                    aria-label={`Vue ${i + 1}`}
+                    className="transition-all duration-200 rounded-full"
+                    style={{
+                      width: i === angleIndex ? 18 : 7,
+                      height: 7,
+                      background: i === angleIndex ? "rgba(0,0,0,0.8)" : "rgba(0,0,0,0.25)",
+                    }}
+                  />
+                ))}
+              </div>
+            )}
             {/* Flèches */}
             {colorVariants.length > 1 && (
               <>
@@ -123,10 +148,32 @@ export default function ProductDetail({ product }: { product: Product }) {
             )}
           </div>
 
-          {/* Thumbnails */}
+          {/* Miniatures des angles (face, dos...) pour la couleur sélectionnée */}
+          {angleImages.length > 1 && (
+            <div className="flex gap-2 justify-center flex-wrap">
+              {angleImages.map((img, i) => (
+                <button
+                  key={img}
+                  onClick={() => setAngleIndex(i)}
+                  className={`w-16 h-16 relative rounded-xl overflow-hidden border-2 transition-colors flex-shrink-0 ${
+                    i === angleIndex ? "border-black" : "border-transparent"
+                  }`}
+                >
+                  <Image
+                    src={img}
+                    alt={`${product.name} — vue ${i + 1}`}
+                    fill
+                    className="object-contain bg-gray-50"
+                  />
+                </button>
+              ))}
+            </div>
+          )}
+
+          {/* Thumbnails couleurs */}
           <div className="flex gap-2 justify-center flex-wrap">
             {colorVariants.map((v, i) => {
-              const img = getVariantImage(v, product.thumbnail_url);
+              const img = getLocalImages(product.id, getColorName(v))?.[0] ?? getVariantImage(v, product.thumbnail_url);
               return (
                 <button
                   key={v.id}

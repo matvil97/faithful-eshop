@@ -2,6 +2,7 @@
 
 import { useState, useRef, useEffect } from "react";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import { useCart } from "@/context/CartContext";
 import { useLang } from "@/context/LanguageContext";
 import { Product, ProductVariant } from "@/lib/api";
@@ -22,6 +23,8 @@ const COLOR_HEX: Record<string, string> = {
   "Khaki": "#bba96a",
   "Red": "#c0392b",
   "Yellow": "#d4ac0d",
+  "Faded Bone": "#e6ddcd",
+  "Faded Khaki": "#c3a878",
 };
 
 const KNOWN_COLORS = new Set(Object.keys(COLOR_HEX));
@@ -56,6 +59,7 @@ export default function ProductCard({ product }: { product: Product }) {
   const variants = product.sync_variants ?? [];
   const { addItem } = useCart();
   const { t, tColor } = useLang();
+  const router = useRouter();
 
   const colorVariants = [...new Map(variants.map((v) => [getColorName(v), v])).values()];
   const preferredColor = getDefaultColor(product.id);
@@ -146,11 +150,13 @@ export default function ProductCard({ product }: { product: Product }) {
         transition: "transform 300ms ease, box-shadow 300ms ease",
         willChange: "transform",
         padding: "0 0 12px 0",
+        cursor: "pointer",
       }}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
       onMouseDown={() => setPressed(true)}
       onMouseUp={() => setPressed(false)}
+      onClick={() => router.push(`/products/${product.id}`)}
     >
       {/* ── IMAGE ── */}
       <div
