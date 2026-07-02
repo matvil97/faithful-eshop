@@ -10,8 +10,14 @@ const printful = axios.create({
 });
 
 const UPDATES = [
-  { productId: 439033692, name: "Tshirt Faithful (homme)", price: "28.99" },
-  { productId: 439033673, name: "Tshirt Faithful for women", price: "26.99" },
+  { productId: 439033692, name: "Tshirt Faithful", price: "28.99" },
+  { productId: 439033673, name: "Tshirt oversize femme", price: "29.99" },
+  { productId: 439033624, name: "Hoodie Faith", price: "44.99" },
+  { productId: 439140231, name: "Casquette Faithful", price: "29.99" },
+  { productId: 441875248, name: "Bob Faithful", price: "33.99" },
+  { productId: 439122177, name: "Short Faithful", price: "39.99" },
+  { productId: 441880457, name: "Tote bag Faithful", price: "28.99" },
+  { productId: 441892429, name: "Coque iPhone Faithful", price: "27.99" },
 ];
 
 async function updateProductPrice({ productId, name, price }) {
