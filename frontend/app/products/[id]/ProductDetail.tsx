@@ -7,8 +7,6 @@ import { Product, ProductVariant } from "@/lib/api";
 import { getComingSoon } from "@/lib/productConfig";
 import { getLocalImages, getDefaultColor } from "@/lib/localImages";
 
-const FIXED_PRICE = "39.99";
-
 function getVariantImage(variant: ProductVariant, thumbnail: string): string {
   const priority = ["mockup", "preview", "front_large", "front"];
   for (const type of priority) {
@@ -91,7 +89,7 @@ export default function ProductDetail({ product }: { product: Product }) {
       variantId: variant.id,
       productId: product.id,
       name: `${product.name} — ${getColorName(selectedColor)} / ${getSizeName(selectedSize)}`,
-      price: FIXED_PRICE,
+      price: variant.retail_price,
       image: mainImage,
       quantity: 1,
     });
@@ -205,7 +203,7 @@ export default function ProductDetail({ product }: { product: Product }) {
             <p className="text-sm text-gray-400 mt-1">{getColorName(selectedColor)}</p>
           </div>
 
-          <p className="text-3xl font-semibold text-gray-900">€{FIXED_PRICE}</p>
+          <p className="text-3xl font-semibold text-gray-900">€{selectedSize.retail_price}</p>
           <p className="text-xs text-stone-400 -mt-3">Livraison offerte · +6,99€ DOM-TOM</p>
 
           {/* Tailles */}
@@ -247,7 +245,7 @@ export default function ProductDetail({ product }: { product: Product }) {
               onClick={handleAddToCart}
               className="w-full bg-black text-white py-4 rounded-full text-sm font-semibold hover:bg-gray-800 transition-colors mt-2"
             >
-              Ajouter au panier — €{FIXED_PRICE}
+              Ajouter au panier — €{selectedSize.retail_price}
             </button>
           )}
 
