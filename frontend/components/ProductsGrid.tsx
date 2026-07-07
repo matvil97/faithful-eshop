@@ -8,10 +8,29 @@ import ProductCard from "./ProductCard";
 
 const CATEGORY_IDS: Record<string, number[] | null> = {
   tout: null,
-  tshirts: [24, 58],
+  tshirts: [24, 58, 32, 14],
   hoodies: [28],
   accessoires: [195, 41, 46, 48, 244],
 };
+
+// Ordre d'affichage dans "Tout" : vêtements d'abord, accessoires ensuite
+const CATEGORY_ORDER = ["tshirts", "hoodies", "accessoires"];
+
+function categoryRank(product: Product): number {
+  const idx = CATEGORY_ORDER.findIndex((key) => CATEGORY_IDS[key]?.includes(product.category_id));
+  return idx === -1 ? CATEGORY_ORDER.length : idx;
+}
+
+// Échange manuellement la position du t-shirt oversize et du body bébé
+const SWAP_PAIR: [number, number] = [439033673, 445132020];
+
+function withSwap(products: Product[]): Product[] {
+  const arr = [...products];
+  const i = arr.findIndex((p) => p.id === SWAP_PAIR[0]);
+  const j = arr.findIndex((p) => p.id === SWAP_PAIR[1]);
+  if (i !== -1 && j !== -1) [arr[i], arr[j]] = [arr[j], arr[i]];
+  return arr;
+}
 
 export default function ProductsGrid({ products }: { products: Product[] }) {
   const { t } = useLang();
@@ -24,10 +43,11 @@ export default function ProductsGrid({ products }: { products: Product[] }) {
     { key: "accessoires", label: t.accessoires },
   ];
 
-  const filtered =
+  const filtered = withSwap(
     CATEGORY_IDS[activeKey] === null
-      ? products
-      : products.filter((p) => CATEGORY_IDS[activeKey]?.includes(p.category_id));
+      ? [...products].sort((a, b) => categoryRank(a) - categoryRank(b))
+      : products.filter((p) => CATEGORY_IDS[activeKey]?.includes(p.category_id))
+  );
 
   return (
     <div>

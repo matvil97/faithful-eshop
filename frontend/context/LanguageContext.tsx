@@ -74,6 +74,20 @@ const T = {
       Heather: "Chiné",
       "Faded Bone": "Ivoire délavé",
       "Faded Khaki": "Kaki délavé",
+      "Light Washed Denim": "Denim clair délavé",
+      "Vintage White": "Blanc vintage",
+      "Washed Black": "Noir délavé",
+      "Washed Charcoal": "Anthracite délavé",
+      "Washed Maroon": "Bordeaux délavé",
+      Pink: "Rose",
+    } as Record<string, string>,
+
+    // Tailles bébé (âges) depuis Printful
+    sizes: {
+      "6M": "6 mois",
+      "12M": "12 mois",
+      "18M": "18 mois",
+      "24M": "24 mois",
     } as Record<string, string>,
   },
   en: {
@@ -107,6 +121,12 @@ const T = {
     politiqueCookies: "Cookie policy",
     droitsReserves: "All rights reserved.",
     colors: {} as Record<string, string>,
+    sizes: {
+      "6M": "6 months",
+      "12M": "12 months",
+      "18M": "18 months",
+      "24M": "24 months",
+    } as Record<string, string>,
   },
 };
 
@@ -117,6 +137,7 @@ interface LanguageCtx {
   setLang: (l: Lang) => void;
   t: Translations;
   tColor: (name: string) => string;
+  tSize: (name: string) => string;
 }
 
 const LanguageContext = createContext<LanguageCtx | null>(null);
@@ -126,9 +147,10 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
   const t = T[lang] as Translations;
   const tColor = (name: string) =>
     lang === "fr" ? (T.fr.colors[name] ?? name) : name;
+  const tSize = (name: string) => t.sizes[name] ?? name;
 
   return (
-    <LanguageContext.Provider value={{ lang, setLang, t, tColor }}>
+    <LanguageContext.Provider value={{ lang, setLang, t, tColor, tSize }}>
       {children}
     </LanguageContext.Provider>
   );

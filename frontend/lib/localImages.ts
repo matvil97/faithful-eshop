@@ -3,6 +3,7 @@ const P = "/products";
 export const NAME_OVERRIDES: Record<number, string> = {
   439033673: "Tshirt oversize Faithful",
   439033624: "Hoodie Faithful King of Kings",
+  445115732: "T-shirt Faithful Women Edition",
 };
 
 export function getLocalName(productId: number): string | null {
@@ -125,37 +126,108 @@ export const LOCAL_IMAGES: Record<number, Record<string, string[]>> = {
   // "Tshirt oversized Faithful" — ID Printful 439033673
   439033673: {
     Black: [
-      `${P}/unisex-organic-oversized-high-neck-blaster-2.0-t-shirt-black-back-6a46804422d99.png`,
-      `${P}/unisex-organic-oversized-high-neck-blaster-2.0-t-shirt-black-front-2-6a46804423655.png`,
-      `${P}/unisex-organic-oversized-high-neck-blaster-2.0-t-shirt-black-back-6a46804423214.png`,
-      `${P}/unisex-organic-oversized-high-neck-blaster-2.0-t-shirt-black-front-6a46804422f06.png`,
-      `${P}/unisex-organic-oversized-high-neck-blaster-2.0-t-shirt-black-back-6a46804422918.png`,
+      `${P}/unisex-organic-oversized-high-neck-blaster-2.0-t-shirt-black-back-6a4c44c9d7d0a.png`,
+      `${P}/unisex-organic-oversized-high-neck-blaster-2.0-t-shirt-black-front-2-6a4c44c9d9200.png`,
+      `${P}/unisex-organic-oversized-high-neck-blaster-2.0-t-shirt-black-front-6a4c44c9d76bf.png`,
     ],
     Stone: [
-      `${P}/unisex-organic-oversized-high-neck-blaster-2.0-t-shirt-stone-back-6a46804426767.png`,
-      `${P}/unisex-organic-oversized-high-neck-blaster-2.0-t-shirt-stone-front-2-6a468044280e2.png`,
-      `${P}/unisex-organic-oversized-high-neck-blaster-2.0-t-shirt-stone-back-6a468044277fb.png`,
-      `${P}/unisex-organic-oversized-high-neck-blaster-2.0-t-shirt-stone-front-6a46804426d39.png`,
-      `${P}/unisex-organic-oversized-high-neck-blaster-2.0-t-shirt-stone-back-6a46804425e0a.png`,
+      `${P}/unisex-organic-oversized-high-neck-blaster-2.0-t-shirt-stone-back-6a4c44c9d7d8d.png`,
+      `${P}/unisex-organic-oversized-high-neck-blaster-2.0-t-shirt-stone-front-6a4c44c9d87ee.png`,
+      `${P}/unisex-organic-oversized-high-neck-blaster-2.0-t-shirt-stone-front-2-6a4c44c9d9272.png`,
     ],
     White: [
-      `${P}/unisex-organic-oversized-high-neck-blaster-2.0-t-shirt-white-back-6a4680442b707.png`,
-      `${P}/unisex-organic-oversized-high-neck-blaster-2.0-t-shirt-white-front-2-6a4680442ce1e.png`,
-      `${P}/unisex-organic-oversized-high-neck-blaster-2.0-t-shirt-white-back-6a4680442c4a7.png`,
-      `${P}/unisex-organic-oversized-high-neck-blaster-2.0-t-shirt-white-front-6a4680442bba2.png`,
-      `${P}/unisex-organic-oversized-high-neck-blaster-2.0-t-shirt-white-back-6a4680442a9c0.png`,
+      `${P}/unisex-organic-oversized-high-neck-blaster-2.0-t-shirt-white-back-6a4c44c9d7de4.png`,
+      `${P}/unisex-organic-oversized-high-neck-blaster-2.0-t-shirt-white-front-2-6a4c44c9d92c4.png`,
+      `${P}/unisex-organic-oversized-high-neck-blaster-2.0-t-shirt-white-front-6a4c44c9d787e.png`,
     ],
   },
 
-  // "T-shirt oversize Faithful women edition" — ID Printful 444405946
-  444405946: {
-    "Faded Bone": [
-      `${P}/mens-oversized-faded-t-shirt-faded-bone-front-6a4690c672fb6.png`,
-      `${P}/mens-oversized-faded-t-shirt-faded-bone-back-6a4690c671554.png`,
+  // "Little Faithful — Jesus Loves Me" (body bébé) — ID Printful 445132020
+  445132020: {
+    Black: [
+      `${P}/baby-jersey-bodysuit-black-front-6a4c644b9b1a2.png`,
+      `${P}/baby-jersey-bodysuit-black-back-6a4c644b9b65d.png`,
     ],
-    "Faded Khaki": [
-      `${P}/mens-oversized-faded-t-shirt-faded-khaki-front-6a4690c66fd7a.png`,
-      `${P}/mens-oversized-faded-t-shirt-faded-khaki-back-6a4690c66f3c6.png`,
+    Pink: [
+      `${P}/baby-jersey-bodysuit-pink-front-6a4c644b9b1cd.png`,
+      `${P}/baby-jersey-bodysuit-pink-back-6a4c644b9b685.png`,
+    ],
+    Ash: [
+      `${P}/baby-jersey-bodysuit-ash-front-6a4c644b9b15a.png`,
+      `${P}/baby-jersey-bodysuit-ash-back-6a4c644b9b621.png`,
+    ],
+    White: [
+      `${P}/baby-jersey-bodysuit-white-front-6a4c644b9b1f4.png`,
+      `${P}/baby-jersey-bodysuit-white-back-6a4c644b9b6ab.png`,
+    ],
+  },
+
+  // "Coque Iphone noir Faithful" — ID Printful 441892429 (une image par modèle d'iPhone)
+  441892429: {
+    "iPhone 11": [`${P}/clear-case-for-iphone-iphone-11-case-on-phone-6a4c558e62a78.png`],
+    "iPhone 11 Pro": [`${P}/clear-case-for-iphone-iphone-11-pro-case-on-phone-6a4c558e6325c.png`],
+    "iPhone 11 Pro Max": [`${P}/clear-case-for-iphone-iphone-11-pro-max-case-on-phone-6a4c558e62e57.png`],
+    "iPhone 12": [`${P}/clear-case-for-iphone-iphone-12-case-on-phone-6a4c558e63e29.png`],
+    "iPhone 12 mini": [`${P}/clear-case-for-iphone-iphone-12-mini-case-on-phone-6a4c558e63a37.png`],
+    "iPhone 12 Pro": [`${P}/clear-case-for-iphone-iphone-12-pro-case-on-phone-6a4c558e645fb.png`],
+    "iPhone 12 Pro Max": [`${P}/clear-case-for-iphone-iphone-12-pro-max-case-on-phone-6a4c558e64228.png`],
+    "iPhone 13": [`${P}/clear-case-for-iphone-iphone-13-case-on-phone-6a4c558e64de5.png`],
+    "iPhone 13 mini": [`${P}/clear-case-for-iphone-iphone-13-mini-case-on-phone-6a4c558e649f8.png`],
+    "iPhone 13 Pro": [`${P}/clear-case-for-iphone-iphone-13-pro-case-on-phone-6a4c558e65212.png`],
+    "iPhone 13 Pro Max": [`${P}/clear-case-for-iphone-iphone-13-pro-max-case-on-phone-6a4c558e655de.png`],
+    "iPhone 14": [`${P}/clear-case-for-iphone-iphone-14-case-on-phone-6a4c558e659d2.png`],
+    "iPhone 14 Plus": [`${P}/clear-case-for-iphone-iphone-14-plus-case-on-phone-6a4c558e6618b.png`],
+    "iPhone 14 Pro": [`${P}/clear-case-for-iphone-iphone-14-pro-case-on-phone-6a4c558e65daa.png`],
+    "iPhone 14 Pro Max": [`${P}/clear-case-for-iphone-iphone-14-pro-max-case-on-phone-6a4c558e665a1.png`],
+    "iPhone 15": [`${P}/clear-case-for-iphone-iphone-15-case-on-phone-6a4c558e66984.png`],
+    "iPhone 15 Plus": [`${P}/clear-case-for-iphone-iphone-15-plus-case-on-phone-6a4c558e66d43.png`],
+    "iPhone 15 Pro": [`${P}/clear-case-for-iphone-iphone-15-pro-case-on-phone-6a4c558e6714f.png`],
+    "iPhone 15 Pro Max": [`${P}/clear-case-for-iphone-iphone-15-pro-max-case-on-phone-6a4c558e67556.png`],
+    "iPhone 16": [`${P}/clear-case-for-iphone-iphone-16-case-on-phone-6a4c558e6796f.png`],
+    "iPhone 16 Plus": [`${P}/clear-case-for-iphone-iphone-16-plus-case-on-phone-6a4c558e67dd4.png`],
+    "iPhone 16 Pro": [`${P}/clear-case-for-iphone-iphone-16-pro-case-on-phone-6a4c558e6822a.png`],
+    "iPhone 16 Pro Max": [`${P}/clear-case-for-iphone-iphone-16-pro-max-case-on-phone-6a4c558e68694.png`],
+    "iPhone 17": [`${P}/clear-case-for-iphone-iphone-17-case-on-phone-6a4c558e68a68.png`],
+    "iPhone 17 Air": [`${P}/clear-case-for-iphone-iphone-17-air-case-on-phone-6a4c558e68e51.png`],
+    "iPhone 17 Pro": [`${P}/clear-case-for-iphone-iphone-17-pro-case-on-phone-6a4c558e692a8.png`],
+    "iPhone 17 Pro Max": [`${P}/clear-case-for-iphone-iphone-17-pro-max-case-on-phone-6a4c558e69759.png`],
+    "iPhone 7/8": [`${P}/clear-case-for-iphone-iphone-7-8-case-on-phone-6a4c558e6172d.png`],
+    "iPhone SE": [`${P}/clear-case-for-iphone-iphone-se-case-on-phone-6a4c558e63660.png`],
+    "iPhone X/XS": [`${P}/clear-case-for-iphone-iphone-x-xs-case-on-phone-6a4c558e61f46.png`],
+    "iPhone XR": [`${P}/clear-case-for-iphone-iphone-xr-case-on-phone-6a4c558e622ce.png`],
+  },
+
+  // "Mug Faithful" — ID Printful 439032232
+  439032232: {
+    "Mug Faithful": [
+      `${P}/travel-mug-with-a-handle-white-40-oz-front-6a4c4cdbb476e.png`,
+      `${P}/travel-mug-with-a-handle-white-25-oz-front-6a4c4cdbb3f3f.png`,
+      `${P}/travel-mug-with-a-handle-white-40-oz-front-6a4c4cdbb4b0d.png`,
+      `${P}/travel-mug-with-a-handle-white-25-oz-front-6a4c4cdbb435c.png`,
+    ],
+  },
+
+  // "T-shirt FAITHFUL women edition" — ID Printful 445115732
+  445115732: {
+    "Light Washed Denim": [
+      `${P}/unisex-oversized-garment-dyed-t-shirt-light-washed-denim-front-6a4c3dee1b9a3.png`,
+      `${P}/unisex-oversized-garment-dyed-t-shirt-light-washed-denim-back-6a4c3dee1bf31.png`,
+    ],
+    "Vintage White": [
+      `${P}/unisex-oversized-garment-dyed-t-shirt-vintage-white-front-6a4c3dee1ba06.png`,
+      `${P}/unisex-oversized-garment-dyed-t-shirt-vintage-white-back-6a4c3dee1bf8c.png`,
+    ],
+    "Washed Black": [
+      `${P}/unisex-oversized-garment-dyed-t-shirt-washed-black-front-6a4c3dee1ba5b.png`,
+      `${P}/unisex-oversized-garment-dyed-t-shirt-washed-black-back-6a4c3dee1bfdc.png`,
+    ],
+    "Washed Charcoal": [
+      `${P}/unisex-oversized-garment-dyed-t-shirt-washed-charcoal-front-6a4c3dee1baab.png`,
+      `${P}/unisex-oversized-garment-dyed-t-shirt-washed-charcoal-back-6a4c3dee1c02a.png`,
+    ],
+    "Washed Maroon": [
+      `${P}/unisex-oversized-garment-dyed-t-shirt-washed-maroon-front-6a4c3dee1bafa.png`,
+      `${P}/unisex-oversized-garment-dyed-t-shirt-washed-maroon-back-6a4c3dee1c078.png`,
     ],
   },
 };

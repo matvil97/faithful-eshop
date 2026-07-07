@@ -6,6 +6,7 @@ export interface ProductVariant {
   retail_price: string;
   currency: string;
   files: { type: string; preview_url: string }[];
+  availability_status?: string;
 }
 
 export interface Product {

@@ -7,7 +7,8 @@ import { useCart } from "@/context/CartContext";
 import { useLang } from "@/context/LanguageContext";
 import { Product, ProductVariant } from "@/lib/api";
 import { getLocalImages, getLocalName, getDefaultColor } from "@/lib/localImages";
-import { getComingSoon } from "@/lib/productConfig";
+import { getComingSoon, isColorExcluded } from "@/lib/productConfig";
+import { SECOND_ITEM_DISCOUNT_PRODUCTS } from "@/lib/promotions";
 
 const COLOR_HEX: Record<string, string> = {
   "Black": "#1c1c1c",
@@ -25,6 +26,12 @@ const COLOR_HEX: Record<string, string> = {
   "Yellow": "#d4ac0d",
   "Faded Bone": "#e6ddcd",
   "Faded Khaki": "#c3a878",
+  "Light Washed Denim": "#c7d4d9",
+  "Vintage White": "#f2ead9",
+  "Washed Black": "#2a2a28",
+  "Washed Charcoal": "#4b4a44",
+  "Washed Maroon": "#6b3540",
+  "Pink": "#e8a0b4",
 };
 
 const KNOWN_COLORS = new Set(Object.keys(COLOR_HEX));
@@ -54,11 +61,16 @@ function getSizeName(v: ProductVariant) {
   if (p.length === 2 && !KNOWN_COLORS.has(p[1])) return p[1];
   return "One Size";
 }
+function isAvailable(v: ProductVariant) {
+  return v.availability_status == null || v.availability_status === "active";
+}
 
 export default function ProductCard({ product }: { product: Product }) {
-  const variants = product.sync_variants ?? [];
+  const variants = (product.sync_variants ?? []).filter(
+    (v) => !isColorExcluded(product.id, getColorName(v))
+  );
   const { addItem } = useCart();
-  const { t, tColor } = useLang();
+  const { t, tColor, tSize } = useLang();
   const router = useRouter();
 
   const colorVariants = [...new Map(variants.map((v) => [getColorName(v), v])).values()];
@@ -75,10 +87,12 @@ export default function ProductCard({ product }: { product: Product }) {
   const selectedColor = colorVariants[colorIdx];
   const rawColor = getColorName(selectedColor);
   const sizesForColor = variants.filter((v) => getColorName(v) === rawColor);
-  const [selectedSize, setSelectedSize] = useState<ProductVariant>(sizesForColor[0]);
+  const [selectedSize, setSelectedSize] = useState<ProductVariant>(
+    sizesForColor.find(isAvailable) ?? sizesForColor[0]
+  );
 
-  const localImgs = getLocalImages(product.id, rawColor);
-  const images = localImgs ?? getPrintfulImages(selectedColor, product.thumbnail_url);
+  const localImgs = getLocalImages(product.id, rawColor) ?? getLocalImages(product.id, getSizeName(selectedSize));
+  const images = localImgs ?? getPrintfulImages(selectedSize, product.thumbnail_url);
   const isLocal = !!localImgs;
   const displayName = getLocalName(product.id) ?? product.name;
   const comingSoon = getComingSoon(product.id);
@@ -111,7 +125,7 @@ export default function ProductCard({ product }: { product: Product }) {
     setColorIdx(i);
     setImgIdx(0);
     const s = variants.filter((v) => getColorName(v) === getColorName(colorVariants[i]));
-    setSelectedSize(s[0]);
+    setSelectedSize(s.find(isAvailable) ?? s[0]);
   }
 
   function handleAddToCart(e: React.MouseEvent) {
@@ -123,7 +137,7 @@ export default function ProductCard({ product }: { product: Product }) {
     addItem({
       variantId: variant.id,
       productId: product.id,
-      name: `${product.name} — ${rawColor} / ${getSizeName(selectedSize)}`,
+      name: `${product.name} — ${rawColor} / ${tSize(getSizeName(selectedSize))}`,
       price: variant.retail_price,
       image: images[0],
       quantity: 1,
@@ -247,24 +261,32 @@ export default function ProductCard({ product }: { product: Product }) {
           {/* Tailles */}
           {sizesForColor.length > 1 && (
             <div className="flex flex-wrap gap-1 mb-2.5">
-              {sizesForColor.map((v) => (
-                <button
-                  key={v.id}
-                  onClick={(e) => { e.stopPropagation(); setSelectedSize(v); }}
-                  className="transition-all"
-                  style={{
-                    padding: "2px 8px",
-                    fontSize: 10,
-                    letterSpacing: "0.08em",
-                    textTransform: "uppercase",
-                    background: getSizeName(v) === getSizeName(selectedSize) ? "#fff" : "transparent",
-                    color: getSizeName(v) === getSizeName(selectedSize) ? "#111" : "#aaa",
-                    border: getSizeName(v) === getSizeName(selectedSize) ? "1px solid #fff" : "1px solid #555",
-                  }}
-                >
-                  {getSizeName(v)}
-                </button>
-              ))}
+              {sizesForColor.map((v) => {
+                const available = isAvailable(v);
+                return (
+                  <button
+                    key={v.id}
+                    disabled={!available}
+                    onClick={(e) => { e.stopPropagation(); if (available) { setSelectedSize(v); setImgIdx(0); } }}
+                    className="transition-all"
+                    title={available ? undefined : "Rupture de stock temporaire"}
+                    style={{
+                      padding: "2px 8px",
+                      fontSize: 10,
+                      letterSpacing: "0.08em",
+                      textTransform: "uppercase",
+                      background: getSizeName(v) === getSizeName(selectedSize) ? "#fff" : "transparent",
+                      color: !available ? "#555" : getSizeName(v) === getSizeName(selectedSize) ? "#111" : "#aaa",
+                      border: getSizeName(v) === getSizeName(selectedSize) ? "1px solid #fff" : "1px solid #555",
+                      textDecoration: available ? "none" : "line-through",
+                      cursor: available ? "pointer" : "not-allowed",
+                      opacity: available ? 1 : 0.6,
+                    }}
+                  >
+                    {tSize(getSizeName(v))}
+                  </button>
+                );
+              })}
             </div>
           )}
 
@@ -310,6 +332,9 @@ export default function ProductCard({ product }: { product: Product }) {
       </div>
       <p className="text-xs text-stone-400 mt-0.5 px-3 tracking-wide">{tColor(rawColor)}</p>
       <p className="text-[10px] text-stone-300 mt-1 px-3 tracking-wide">Livraison offerte · +6,99€ DOM-TOM</p>
+      {SECOND_ITEM_DISCOUNT_PRODUCTS[product.id] && (
+        <p className="text-[10px] text-emerald-700 mt-0.5 px-3 tracking-wide font-medium">2ème article -20%</p>
+      )}
     </div>
   );
 }

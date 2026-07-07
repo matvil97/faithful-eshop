@@ -3,16 +3,19 @@
 import { useState } from "react";
 import { useCart } from "@/context/CartContext";
 import { useLang } from "@/context/LanguageContext";
+import { applyPromotions } from "@/lib/promotions";
 import Link from "next/link";
 import Image from "next/image";
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:4000";
 
 export default function CartPage() {
-  const { items, removeItem, updateQty, total } = useCart();
+  const { items, removeItem, updateQty } = useCart();
   const { t } = useLang();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+
+  const { lines, subtotal, total, totalDiscount } = applyPromotions(items);
 
   async function handleCheckout() {
     setLoading(true);
@@ -22,12 +25,12 @@ export default function CartPage() {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          items: items.map((i) => ({
-            name: i.name,
-            price: i.price,
-            image: i.image,
-            quantity: i.quantity,
-            variantId: i.variantId,
+          items: lines.map((l) => ({
+            name: l.name,
+            price: l.unitPrice.toFixed(2),
+            image: l.image,
+            quantity: l.quantity,
+            variantId: l.variantId,
           })),
         }),
       });
@@ -88,6 +91,12 @@ export default function CartPage() {
 
         <div className="flex items-center justify-between p-6" style={{ background: "#fff", border: "1px solid #e8e4de" }}>
           <div>
+            {totalDiscount > 0 && (
+              <>
+                <p className="text-xs text-stone-400 line-through">€{subtotal.toFixed(2)}</p>
+                <p className="text-xs text-green-700 mb-0.5">2ème article -20% : -€{totalDiscount.toFixed(2)}</p>
+              </>
+            )}
             <p className="text-xs tracking-widest uppercase text-stone-400">{t.totalEstime}</p>
             <p className="text-2xl font-semibold text-stone-900 mt-1">€{total.toFixed(2)}</p>
           </div>
