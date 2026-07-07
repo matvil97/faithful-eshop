@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 
 // Passe à false pour rouvrir le site.
-const MAINTENANCE_MODE = false;
+const MAINTENANCE_MODE = true;
 
 const html = `<!doctype html>
 <html lang="fr">
@@ -37,7 +37,10 @@ const html = `<!doctype html>
   <body>
     <div>
       <h1>Le site est en maintenance</h1>
-      <p>Nous revenons très vite. Merci de votre patience.</p>
+      <p>
+        Nous travaillons à améliorer l'identité visuelle de la marque.<br />
+        Merci de votre compréhension — le site sera opérationnel vendredi à 18h.
+      </p>
     </div>
   </body>
 </html>`;
@@ -49,7 +52,7 @@ export function proxy(request: NextRequest) {
     status: 503,
     headers: {
       "content-type": "text/html; charset=utf-8",
-      "retry-after": "3600",
+      "retry-after": "259200",
     },
   });
 }
