@@ -8,7 +8,7 @@ export function getComingSoon(productId: number): string | null {
 
 // Coloris à ne pas proposer à la vente (ex: rendu du logo peu lisible)
 export const EXCLUDED_COLORS: Record<number, string[]> = {
-  445115732: ["Khaki"],
+  445115732: ["Khaki", "Washed Maroon", "Light Washed Denim"],
 };
 
 export function isColorExcluded(productId: number, colorName: string): boolean {

@@ -200,34 +200,31 @@ export const LOCAL_IMAGES: Record<number, Record<string, string[]>> = {
   // "Mug Faithful" — ID Printful 439032232
   439032232: {
     "Mug Faithful": [
-      `${P}/travel-mug-with-a-handle-white-40-oz-front-6a4c4cdbb476e.png`,
-      `${P}/travel-mug-with-a-handle-white-25-oz-front-6a4c4cdbb3f3f.png`,
-      `${P}/travel-mug-with-a-handle-white-40-oz-front-6a4c4cdbb4b0d.png`,
-      `${P}/travel-mug-with-a-handle-white-25-oz-front-6a4c4cdbb435c.png`,
+      `${P}/travel-mug-with-a-handle-white-40-oz-front-6a51145d2677e.png`,
+      `${P}/travel-mug-with-a-handle-white-40-oz-left-6a51145d2696e.png`,
+      `${P}/travel-mug-with-a-handle-white-40-oz-right-6a51145d26b4a.png`,
+      `${P}/travel-mug-with-a-handle-white-25-oz-front-6a51145d2604a.png`,
+      `${P}/travel-mug-with-a-handle-white-25-oz-left-6a51145d26388.png`,
+      `${P}/travel-mug-with-a-handle-white-25-oz-right-6a51145d26589.png`,
     ],
   },
 
   // "T-shirt FAITHFUL women edition" — ID Printful 445115732
   445115732: {
-    "Light Washed Denim": [
-      `${P}/unisex-oversized-garment-dyed-t-shirt-light-washed-denim-front-6a4c3dee1b9a3.png`,
-      `${P}/unisex-oversized-garment-dyed-t-shirt-light-washed-denim-back-6a4c3dee1bf31.png`,
-    ],
     "Vintage White": [
-      `${P}/unisex-oversized-garment-dyed-t-shirt-vintage-white-front-6a4c3dee1ba06.png`,
-      `${P}/unisex-oversized-garment-dyed-t-shirt-vintage-white-back-6a4c3dee1bf8c.png`,
+      `${P}/unisex-oversized-garment-dyed-t-shirt-vintage-white-front-6a510ce70591b.png`,
+      `${P}/unisex-oversized-garment-dyed-t-shirt-vintage-white-back-6a510ce70604b.png`,
+      `${P}/unisex-oversized-garment-dyed-t-shirt-vintage-white-left-front-6a510ce706517.png`,
     ],
     "Washed Black": [
-      `${P}/unisex-oversized-garment-dyed-t-shirt-washed-black-front-6a4c3dee1ba5b.png`,
-      `${P}/unisex-oversized-garment-dyed-t-shirt-washed-black-back-6a4c3dee1bfdc.png`,
+      `${P}/unisex-oversized-garment-dyed-t-shirt-washed-black-front-6a510ce705b94.png`,
+      `${P}/unisex-oversized-garment-dyed-t-shirt-washed-black-back-6a510ce7060b5.png`,
+      `${P}/unisex-oversized-garment-dyed-t-shirt-washed-black-left-front-6a510ce706583.png`,
     ],
     "Washed Charcoal": [
-      `${P}/unisex-oversized-garment-dyed-t-shirt-washed-charcoal-front-6a4c3dee1baab.png`,
-      `${P}/unisex-oversized-garment-dyed-t-shirt-washed-charcoal-back-6a4c3dee1c02a.png`,
-    ],
-    "Washed Maroon": [
-      `${P}/unisex-oversized-garment-dyed-t-shirt-washed-maroon-front-6a4c3dee1bafa.png`,
-      `${P}/unisex-oversized-garment-dyed-t-shirt-washed-maroon-back-6a4c3dee1c078.png`,
+      `${P}/unisex-oversized-garment-dyed-t-shirt-washed-charcoal-front-6a510ce705bf8.png`,
+      `${P}/unisex-oversized-garment-dyed-t-shirt-washed-charcoal-back-6a510ce706108.png`,
+      `${P}/unisex-oversized-garment-dyed-t-shirt-washed-charcoal-left-front-6a510ce7065d4.png`,
     ],
   },
 };

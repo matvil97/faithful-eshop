@@ -1,8 +1,8 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 
-// Passe à false pour rouvrir le site.
-const MAINTENANCE_MODE = true;
+// Passe à false pour rouvrir le site. Désactivé automatiquement en local (next dev).
+const MAINTENANCE_MODE = process.env.NODE_ENV === "production";
 
 const html = `<!doctype html>
 <html lang="fr">
