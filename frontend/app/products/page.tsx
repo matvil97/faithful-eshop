@@ -2,6 +2,8 @@ import { getProducts } from "@/lib/api";
 import ProductsGrid from "@/components/ProductsGrid";
 import ProductsHeader from "@/components/ProductsHeader";
 
+export const dynamic = "force-dynamic";
+
 export default async function ProductsPage() {
   const products = await getProducts();
 
