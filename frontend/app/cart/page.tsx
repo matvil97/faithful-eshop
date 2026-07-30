@@ -68,15 +68,17 @@ export default function CartPage() {
               className="flex items-center gap-5 p-4"
               style={{ background: "#fff", border: "1px solid #e8e4de" }}
             >
-              {item.image && (
-                <div className="w-16 h-16 relative flex-shrink-0" style={{ background: "#faf9f7" }}>
-                  <Image src={item.image} alt={item.name} fill className="object-contain" style={{ mixBlendMode: "multiply" }} />
+              <Link href={`/products/${item.productId}`} className="flex items-center gap-5 flex-1 min-w-0">
+                {item.image && (
+                  <div className="w-16 h-16 relative flex-shrink-0" style={{ background: "#faf9f7" }}>
+                    <Image src={item.image} alt={item.name} fill className="object-contain" style={{ mixBlendMode: "multiply" }} />
+                  </div>
+                )}
+                <div className="flex-1 min-w-0">
+                  <p className="text-sm font-medium text-stone-900 truncate hover:underline">{item.name}</p>
+                  <p className="text-xs text-stone-400 mt-0.5">€{item.price}</p>
                 </div>
-              )}
-              <div className="flex-1 min-w-0">
-                <p className="text-sm font-medium text-stone-900 truncate">{item.name}</p>
-                <p className="text-xs text-stone-400 mt-0.5">€{item.price}</p>
-              </div>
+              </Link>
               <div className="flex items-center gap-2">
                 <button onClick={() => updateQty(item.variantId, item.quantity - 1)} className="w-7 h-7 border border-stone-300 text-stone-600 hover:bg-stone-50 text-sm">−</button>
                 <span className="w-6 text-center text-sm text-stone-900">{item.quantity}</span>
