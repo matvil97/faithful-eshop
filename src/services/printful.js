@@ -24,7 +24,9 @@ async function getVariants(productId) {
 }
 
 async function createOrder(order) {
-  const res = await printful.post("/orders", order);
+  // confirm: true => la commande part directement en fabrication chez Printful
+  // au lieu de rester en brouillon (comportement par défaut de l'API Printful).
+  const res = await printful.post("/orders", { confirm: true, ...order });
   return res.data.result;
 }
 
