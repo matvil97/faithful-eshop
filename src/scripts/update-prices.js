@@ -9,15 +9,19 @@ const printful = axios.create({
   },
 });
 
+// Prix calculés pour garantir une marge minimale de 7€ par produit,
+// sur la base du coût Printful total réel (produit + livraison + TVA
+// facturée par Printful), obtenu via des commandes de test annulées.
+// Recalculer si Printful modifie ses coûts ou si de nouveaux produits arrivent.
 const UPDATES = [
-  { productId: 439033692, name: "Tshirt Faithful", price: "28.99" },
-  { productId: 439033673, name: "Tshirt oversize femme", price: "29.99" },
-  { productId: 439033624, name: "Hoodie Faith", price: "44.99" },
+  { productId: 439033673, name: "Tshirt oversize Faithful (unisexe)", price: "35.99" },
+  { productId: 445115732, name: "Tshirt Faithful women edition", price: "36.99" },
   { productId: 439140231, name: "Casquette Faithful", price: "29.99" },
   { productId: 441875248, name: "Bob Faithful", price: "33.99" },
-  { productId: 439122177, name: "Short Faithful", price: "39.99" },
-  { productId: 441880457, name: "Tote bag Faithful", price: "28.99" },
+  { productId: 439122177, name: "Short Faithful", price: "42.99" },
+  { productId: 441880457, name: "Tote bag Faithful", price: "29.99" },
   { productId: 441892429, name: "Coque iPhone Faithful", price: "27.99" },
+  { productId: 439032232, name: "Mug Faithful", price: "35.99" },
 ];
 
 async function updateProductPrice({ productId, name, price }) {
