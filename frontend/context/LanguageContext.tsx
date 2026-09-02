@@ -12,7 +12,7 @@ const T = {
     inspiration: "Parole",
 
     // Products page header
-    collection: "Collection Summer 2026",
+    collection: "Collection Autumn 2026",
     laBoutique: "La Boutique",
 
     // Filters
@@ -94,7 +94,7 @@ const T = {
     boutique: "Shop",
     panier: "Cart",
     inspiration: "Inspiration",
-    collection: "Summer Collection 2026",
+    collection: "Autumn Collection 2026",
     laBoutique: "The Shop",
     tout: "All",
     tshirts: "Clothing",
