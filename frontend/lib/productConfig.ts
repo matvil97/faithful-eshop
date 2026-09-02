@@ -1,6 +1,4 @@
-export const COMING_SOON: Record<number, string> = {
-  464383614: "Septembre 2026",
-};
+export const COMING_SOON: Record<number, string> = {};
 
 export function getComingSoon(productId: number): string | null {
   return COMING_SOON[productId] ?? null;

@@ -32,6 +32,9 @@ const COLOR_HEX: Record<string, string> = {
   "Washed Charcoal": "#4b4a44",
   "Washed Maroon": "#6b3540",
   "Pink": "#e8a0b4",
+  "Charcoal": "#54534d",
+  "Dark Chocolate": "#3b2314",
+  "Military Green": "#4b5320",
 };
 
 const KNOWN_COLORS = new Set(Object.keys(COLOR_HEX));
