@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 
 // Passe à true pour fermer le site.
-const MAINTENANCE_MODE = false;
+const MAINTENANCE_MODE = true;
 
 const html = `<!doctype html>
 <html lang="fr">
@@ -38,8 +38,8 @@ const html = `<!doctype html>
     <div>
       <h1>Le site est en maintenance</h1>
       <p>
-        Nous travaillons à améliorer l'identité visuelle de la marque.<br />
-        Merci de votre compréhension — le site sera opérationnel vendredi à 18h.
+        On prépare le drop de la collection Autumn.<br />
+        Merci de votre patience — on rouvre très bientôt.
       </p>
     </div>
   </body>
