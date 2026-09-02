@@ -20,8 +20,8 @@ const UPDATES = [
   { productId: 441875248, name: "Bob Faithful", price: "33.99" },
   { productId: 439122177, name: "Short Faithful", price: "42.99" },
   { productId: 441880457, name: "Tote bag Faithful", price: "29.99" },
-  { productId: 441892429, name: "Coque iPhone Faithful", price: "27.99" },
   { productId: 439032232, name: "Mug Faithful", price: "35.99" },
+  { productId: 464383614, name: "Hoodie Faithful women edition", price: "45.99" },
 ];
 
 async function updateProductPrice({ productId, name, price }) {
