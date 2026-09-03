@@ -57,6 +57,7 @@ export const LOCAL_IMAGES: Record<number, Record<string, string[]>> = {
       `${P}/unisex-organic-sweatshirt-french-navy-right-6a99aa51314ad.png`,
     ],
     White: [
+      `${P}/unisex-organic-sweatshirt-white-back-6a99aa513108f.png`,
       `${P}/unisex-organic-sweatshirt-white-front-6a99aa512f8eb.png`,
       `${P}/unisex-organic-sweatshirt-white-front-6a99aa5130c13.png`,
       `${P}/unisex-organic-sweatshirt-white-front-2-6a99aa5131d8e.png`,
@@ -65,7 +66,6 @@ export const LOCAL_IMAGES: Record<number, Record<string, string[]>> = {
       `${P}/unisex-organic-sweatshirt-white-right-front-6a99aa51302a9.png`,
       `${P}/unisex-organic-sweatshirt-white-right-front-6a99aa51321f3.png`,
       `${P}/unisex-organic-sweatshirt-white-back-6a99aa512fd65.png`,
-      `${P}/unisex-organic-sweatshirt-white-back-6a99aa513108f.png`,
       `${P}/unisex-organic-sweatshirt-white-left-6a99aa5131905.png`,
       `${P}/unisex-organic-sweatshirt-white-right-6a99aa51314e0.png`,
     ],
@@ -283,7 +283,7 @@ const DEFAULT_COLOR: Record<number, string> = {
   464383614: "Black",
   464484809: "Black",
   464815111: "Black",
-  464952476: "Black",
+  464952476: "White",
   439033673: "White",
 };
 
