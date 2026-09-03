@@ -5,6 +5,7 @@ export const NAME_OVERRIDES: Record<number, string> = {
   464383614: "Hoodie Faithful Women Edition",
   445115732: "T-shirt Faithful Women Edition",
   464484809: "Bonnet Faithful \"The Lifter\"",
+  464815111: "Sweat Faithful Women Edition",
 };
 
 export function getLocalName(productId: number): string | null {
@@ -12,6 +13,34 @@ export function getLocalName(productId: number): string | null {
 }
 
 export const LOCAL_IMAGES: Record<number, Record<string, string[]>> = {
+  // "Sweat Faithful women edition" — ID Printful 464815111
+  464815111: {
+    Black: [
+      `${P}/womens-cropped-hoodie-black-front-6a996b288879c.png`,
+      `${P}/womens-cropped-hoodie-black-front-6a996b2887f2f.png`,
+      `${P}/womens-cropped-hoodie-black-back-6a996b2888b4d.png`,
+      `${P}/womens-cropped-hoodie-black-back-6a996b28883ff.png`,
+      `${P}/womens-cropped-hoodie-black-left-6a996b2888edb.png`,
+      `${P}/womens-cropped-hoodie-black-right-6a996b2889285.png`,
+    ],
+    "Military Green": [
+      `${P}/womens-cropped-hoodie-military-green-front-6a996b28887dc.png`,
+      `${P}/womens-cropped-hoodie-military-green-front-6a996b2888047.png`,
+      `${P}/womens-cropped-hoodie-military-green-back-6a996b2888b8c.png`,
+      `${P}/womens-cropped-hoodie-military-green-back-6a996b288843f.png`,
+      `${P}/womens-cropped-hoodie-military-green-left-6a996b2888f19.png`,
+      `${P}/womens-cropped-hoodie-military-green-right-6a996b28892c4.png`,
+    ],
+    Storm: [
+      `${P}/womens-cropped-hoodie-storm-front-6a996b288880b.png`,
+      `${P}/womens-cropped-hoodie-storm-front-6a996b2888080.png`,
+      `${P}/womens-cropped-hoodie-storm-back-6a996b2888bba.png`,
+      `${P}/womens-cropped-hoodie-storm-back-6a996b288846f.png`,
+      `${P}/womens-cropped-hoodie-storm-left-6a996b2888f4d.png`,
+      `${P}/womens-cropped-hoodie-storm-right-6a996b28892f2.png`,
+    ],
+  },
+
   // "Faithful short blanc" — ID Printful 439122177
   439122177: {
     White: [
@@ -207,6 +236,7 @@ export function getLocalImages(productId: number, colorName: string): string[] |
 const DEFAULT_COLOR: Record<number, string> = {
   464383614: "Black",
   464484809: "Black",
+  464815111: "Black",
   441875248: "White",
   439033673: "White",
 };
