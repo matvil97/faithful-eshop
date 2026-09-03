@@ -205,7 +205,10 @@ export default function ProductDetail({ product }: { product: Product }) {
           {/* Thumbnails couleurs */}
           <div className="flex gap-2 justify-center flex-wrap">
             {colorVariants.map((v, i) => {
-              const img = getLocalImages(product.id, getColorName(v))?.[0] ?? getVariantImage(v, product.thumbnail_url);
+              const colorImages = getLocalImages(product.id, getColorName(v));
+              // Garde la même pose (angleIndex) que l'image principale affichée,
+              // pour ne pas montrer une pose différente d'une couleur à l'autre.
+              const img = colorImages?.[angleIndex] ?? colorImages?.[0] ?? getVariantImage(v, product.thumbnail_url);
               return (
                 <button
                   key={v.id}
