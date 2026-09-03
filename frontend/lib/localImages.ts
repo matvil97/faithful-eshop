@@ -15,15 +15,15 @@ export const LOCAL_IMAGES: Record<number, Record<string, string[]>> = {
   // "Faithful short blanc" — ID Printful 439122177
   439122177: {
     White: [
-      `${P}/all-over-print-unisex-athletic-long-shorts-white-front-6a98d0ff1fcd8.png`,
-      `${P}/all-over-print-unisex-athletic-long-shorts-white-front-2-6a98d0ff204bc.png`,
-      `${P}/all-over-print-unisex-athletic-long-shorts-white-front-6a98d0ff20394.png`,
-      `${P}/all-over-print-unisex-athletic-long-shorts-white-back-6a98d0ff2025f.png`,
-      `${P}/all-over-print-unisex-athletic-long-shorts-white-back-2-6a98d0ff20840.png`,
-      `${P}/all-over-print-unisex-athletic-long-shorts-white-back-6a98d0ff2070a.png`,
-      `${P}/all-over-print-unisex-athletic-long-shorts-white-left-6a98d0ff20116.png`,
-      `${P}/all-over-print-unisex-athletic-long-shorts-white-right-6a98d0ff1ffd8.png`,
-      `${P}/all-over-print-unisex-athletic-long-shorts-white-left-back-6a98d0ff205e3.png`,
+      `${P}/all-over-print-unisex-athletic-long-shorts-white-front-6a996079d0913.png`,
+      `${P}/all-over-print-unisex-athletic-long-shorts-white-front-2-6a996079d10bc.png`,
+      `${P}/all-over-print-unisex-athletic-long-shorts-white-front-6a996079d0f8f.png`,
+      `${P}/all-over-print-unisex-athletic-long-shorts-white-back-6a996079d0e32.png`,
+      `${P}/all-over-print-unisex-athletic-long-shorts-white-back-2-6a996079d1459.png`,
+      `${P}/all-over-print-unisex-athletic-long-shorts-white-back-6a996079d133c.png`,
+      `${P}/all-over-print-unisex-athletic-long-shorts-white-left-6a996079d0cee.png`,
+      `${P}/all-over-print-unisex-athletic-long-shorts-white-right-6a996079d0bc4.png`,
+      `${P}/all-over-print-unisex-athletic-long-shorts-white-left-back-6a996079d11e6.png`,
     ],
   },
 
