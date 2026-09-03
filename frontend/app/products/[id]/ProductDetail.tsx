@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { useCart } from "@/context/CartContext";
 import { useLang } from "@/context/LanguageContext";
 import { Product, ProductVariant } from "@/lib/api";
@@ -44,7 +45,7 @@ export default function ProductDetail({ product }: { product: Product }) {
     (v) => !isColorExcluded(product.id, getColorName(v))
   );
   const { addItem } = useCart();
-  const { tSize } = useLang();
+  const { t, tSize } = useLang();
 
   // One representative variant per color (for the carousel)
   const colorVariants = [...new Map(variants.map((v) => [getColorName(v), v])).values()];
@@ -115,6 +116,12 @@ export default function ProductDetail({ product }: { product: Product }) {
   return (
     <>
     <div className="max-w-5xl mx-auto px-6 py-12">
+      <Link
+        href="/products"
+        className="inline-flex items-center gap-2 mb-8 text-xs tracking-[0.15em] uppercase text-stone-500 hover:text-stone-900 transition-colors"
+      >
+        <span aria-hidden>←</span> {t.retourBoutique}
+      </Link>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
 
         {/* Carrousel */}

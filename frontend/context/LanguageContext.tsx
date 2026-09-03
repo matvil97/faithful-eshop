@@ -14,6 +14,7 @@ const T = {
     // Products page header
     collection: "Collection Autumn 2026",
     laBoutique: "La Boutique",
+    retourBoutique: "Retour à la boutique",
 
     // Filters
     tout: "Tout",
@@ -96,6 +97,7 @@ const T = {
     inspiration: "Inspiration",
     collection: "Autumn Collection 2026",
     laBoutique: "The Shop",
+    retourBoutique: "Back to shop",
     tout: "All",
     tshirts: "Clothing",
     hoodies: "Hoodies",
