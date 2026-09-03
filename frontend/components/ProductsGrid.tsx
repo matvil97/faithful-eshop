@@ -8,7 +8,7 @@ import ProductCard from "./ProductCard";
 
 const CATEGORY_IDS: Record<string, number[] | null> = {
   tout: null,
-  tshirts: [24, 58, 32, 14],
+  tshirts: [24, 58, 32, 14, 29],
   hoodies: [28, 9],
   accessoires: [195, 41, 46, 48, 244, 45],
 };

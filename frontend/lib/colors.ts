@@ -29,6 +29,8 @@ export const COLOR_HEX: Record<string, string> = {
   "Military Green": "#4b5320",
   "Dark Grey": "#6b6b6b",
   "Storm": "#5c6670",
+  "Deep Charcoal Grey": "#3a3a3a",
+  "French Navy": "#1c2b45",
 };
 
 export const KNOWN_COLORS = new Set(Object.keys(COLOR_HEX));

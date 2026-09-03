@@ -7,6 +7,7 @@ export const NAME_OVERRIDES: Record<number, string> = {
   464484809: "Bonnet Faithful \"The Lifter\"",
   464815111: "Sweat Faithful Women Edition",
   464868999: "Hoodie Faithful Premium Edition",
+  464952476: "Pull Faithful",
 };
 
 export function getLocalName(productId: number): string | null {
@@ -14,6 +15,62 @@ export function getLocalName(productId: number): string | null {
 }
 
 export const LOCAL_IMAGES: Record<number, Record<string, string[]>> = {
+  // "Pull Faithful" — ID Printful 464952476
+  464952476: {
+    Black: [
+      `${P}/unisex-organic-sweatshirt-black-front-6a99aa512f753.png`,
+      `${P}/unisex-organic-sweatshirt-black-front-6a99aa5130b50.png`,
+      `${P}/unisex-organic-sweatshirt-black-front-2-6a99aa5131cdc.png`,
+      `${P}/unisex-organic-sweatshirt-black-left-front-6a99aa51306a8.png`,
+      `${P}/unisex-organic-sweatshirt-black-left-front-6a99aa5132592.png`,
+      `${P}/unisex-organic-sweatshirt-black-right-front-6a99aa51301ba.png`,
+      `${P}/unisex-organic-sweatshirt-black-right-front-6a99aa5132131.png`,
+      `${P}/unisex-organic-sweatshirt-black-back-6a99aa512fccb.png`,
+      `${P}/unisex-organic-sweatshirt-black-back-6a99aa5130fd9.png`,
+      `${P}/unisex-organic-sweatshirt-black-left-6a99aa5131855.png`,
+      `${P}/unisex-organic-sweatshirt-black-right-6a99aa5131426.png`,
+    ],
+    "Deep Charcoal Grey": [
+      `${P}/unisex-organic-sweatshirt-deep-charcoal-grey-front-6a99aa512f87a.png`,
+      `${P}/unisex-organic-sweatshirt-deep-charcoal-grey-front-6a99aa5130bac.png`,
+      `${P}/unisex-organic-sweatshirt-deep-charcoal-grey-front-2-6a99aa5131d27.png`,
+      `${P}/unisex-organic-sweatshirt-deep-charcoal-grey-left-front-6a99aa5130711.png`,
+      `${P}/unisex-organic-sweatshirt-deep-charcoal-grey-left-front-6a99aa51325d5.png`,
+      `${P}/unisex-organic-sweatshirt-deep-charcoal-grey-right-front-6a99aa5130222.png`,
+      `${P}/unisex-organic-sweatshirt-deep-charcoal-grey-right-front-6a99aa513217d.png`,
+      `${P}/unisex-organic-sweatshirt-deep-charcoal-grey-back-6a99aa512fd08.png`,
+      `${P}/unisex-organic-sweatshirt-deep-charcoal-grey-back-6a99aa513102a.png`,
+      `${P}/unisex-organic-sweatshirt-deep-charcoal-grey-left-6a99aa51318a0.png`,
+      `${P}/unisex-organic-sweatshirt-deep-charcoal-grey-right-6a99aa5131477.png`,
+    ],
+    "French Navy": [
+      `${P}/unisex-organic-sweatshirt-french-navy-front-6a99aa512f8b6.png`,
+      `${P}/unisex-organic-sweatshirt-french-navy-front-6a99aa5130be2.png`,
+      `${P}/unisex-organic-sweatshirt-french-navy-front-2-6a99aa5131d5c.png`,
+      `${P}/unisex-organic-sweatshirt-french-navy-left-front-6a99aa5130749.png`,
+      `${P}/unisex-organic-sweatshirt-french-navy-left-front-6a99aa513260b.png`,
+      `${P}/unisex-organic-sweatshirt-french-navy-right-front-6a99aa5130275.png`,
+      `${P}/unisex-organic-sweatshirt-french-navy-right-front-6a99aa51321bf.png`,
+      `${P}/unisex-organic-sweatshirt-french-navy-back-6a99aa512fd38.png`,
+      `${P}/unisex-organic-sweatshirt-french-navy-back-6a99aa513105f.png`,
+      `${P}/unisex-organic-sweatshirt-french-navy-left-6a99aa51318d3.png`,
+      `${P}/unisex-organic-sweatshirt-french-navy-right-6a99aa51314ad.png`,
+    ],
+    White: [
+      `${P}/unisex-organic-sweatshirt-white-front-6a99aa512f8eb.png`,
+      `${P}/unisex-organic-sweatshirt-white-front-6a99aa5130c13.png`,
+      `${P}/unisex-organic-sweatshirt-white-front-2-6a99aa5131d8e.png`,
+      `${P}/unisex-organic-sweatshirt-white-left-front-6a99aa513077a.png`,
+      `${P}/unisex-organic-sweatshirt-white-left-front-6a99aa513263e.png`,
+      `${P}/unisex-organic-sweatshirt-white-right-front-6a99aa51302a9.png`,
+      `${P}/unisex-organic-sweatshirt-white-right-front-6a99aa51321f3.png`,
+      `${P}/unisex-organic-sweatshirt-white-back-6a99aa512fd65.png`,
+      `${P}/unisex-organic-sweatshirt-white-back-6a99aa513108f.png`,
+      `${P}/unisex-organic-sweatshirt-white-left-6a99aa5131905.png`,
+      `${P}/unisex-organic-sweatshirt-white-right-6a99aa51314e0.png`,
+    ],
+  },
+
   // "Hoodie Faithful for men" — ID Printful 464868999
   464868999: {
     Black: [
@@ -90,36 +147,6 @@ export const LOCAL_IMAGES: Record<number, Record<string, string[]>> = {
       `${P}/cuffed-beanie-white-front-6a98c7400974b.png`,
     ],
   },
-
-  // "Bob Faithful edition summer" — ID Printful 441875248
-  441875248: {
-    Black: [
-      `${P}/bucket-hat-black-front-6a3ba0d2d75f7.png`,
-      `${P}/bucket-hat-black-front-6a3ba0d2d7a04.png`,
-      `${P}/bucket-hat-black-front-6a3ba0d2d7c64.png`,
-    ],
-    Navy: [
-      `${P}/bucket-hat-navy-front-6a3ba0d2d77c1.png`,
-      `${P}/bucket-hat-navy-front-6a3ba0d2d7aa5.png`,
-      `${P}/bucket-hat-navy-front-6a3ba0d2d7d05.png`,
-    ],
-    Grey: [
-      `${P}/bucket-hat-grey-front-6a3ba0d2d7750.png`,
-      `${P}/bucket-hat-grey-front-6a3ba0d2d7a4d.png`,
-      `${P}/bucket-hat-grey-front-6a3ba0d2d7ca9.png`,
-    ],
-    Khaki: [
-      `${P}/bucket-hat-khaki-front-6a3ba0d2d7791.png`,
-      `${P}/bucket-hat-khaki-front-6a3ba0d2d7a7b.png`,
-      `${P}/bucket-hat-khaki-front-6a3ba0d2d7cd8.png`,
-    ],
-    White: [
-      `${P}/bucket-hat-white-front-6a3ba0d2d77f8.png`,
-      `${P}/bucket-hat-white-front-6a3ba0d2d7ad0.png`,
-      `${P}/bucket-hat-white-front-6a3ba0d2d7d31.png`,
-    ],
-  },
-
 
   // "Casquette Faithful" — ID Printful 439140231
   439140231: {
@@ -256,7 +283,7 @@ const DEFAULT_COLOR: Record<number, string> = {
   464383614: "Black",
   464484809: "Black",
   464815111: "Black",
-  441875248: "White",
+  464952476: "Black",
   439033673: "White",
 };
 
