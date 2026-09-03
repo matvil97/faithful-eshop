@@ -21,7 +21,7 @@ const UPDATES = [
   { productId: 439122177, name: "Short Faithful", price: "42.99" },
   { productId: 439032232, name: "Mug Faithful", price: "35.99" },
   { productId: 464383614, name: "Hoodie Faithful women edition", price: "45.99" },
-  { productId: 464484809, name: "Bonnet Faithful The Lifter", price: "29.99" },
+  { productId: 464484809, name: "Bonnet Faithful The Lifter", price: "34.99" },
 ];
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
