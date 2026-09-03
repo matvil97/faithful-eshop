@@ -8,6 +8,7 @@ import { Product, ProductVariant } from "@/lib/api";
 import { getComingSoon, isColorExcluded } from "@/lib/productConfig";
 import { SECOND_ITEM_DISCOUNT_PRODUCTS } from "@/lib/promotions";
 import { getLocalImages, getDefaultColor } from "@/lib/localImages";
+import { KNOWN_COLORS } from "@/lib/colors";
 
 function getVariantImage(variant: ProductVariant, thumbnail: string): string {
   const priority = ["mockup", "preview", "front_large", "front"];
@@ -18,11 +19,6 @@ function getVariantImage(variant: ProductVariant, thumbnail: string): string {
   const any = variant.files?.find((f) => f.preview_url);
   return any?.preview_url ?? thumbnail;
 }
-
-const KNOWN_COLORS = new Set([
-  "Black", "Black Heather", "White", "Ash", "Stone", "Light Blue",
-  "Heather Ice Blue", "Carolina Blue", "Navy", "Grey", "Khaki", "Red", "Yellow",
-]);
 
 function getColorName(variant: ProductVariant): string {
   const parts = variant.name.split(" / ");
