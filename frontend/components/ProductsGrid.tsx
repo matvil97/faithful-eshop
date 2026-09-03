@@ -21,14 +21,19 @@ function categoryRank(product: Product): number {
   return idx === -1 ? CATEGORY_ORDER.length : idx;
 }
 
-// Échange manuellement la position du t-shirt oversize et du body bébé
-const SWAP_PAIR: [number, number] = [439033673, 445132020];
+// Échanges manuels de position dans la grille (paires de product IDs)
+const SWAP_PAIRS: [number, number][] = [
+  [439033673, 445132020], // t-shirt oversize <-> body bébé (si réintroduit un jour)
+  [439033673, 439122177], // t-shirt oversize <-> short (regroupe les 2 t-shirts)
+];
 
 function withSwap(products: Product[]): Product[] {
   const arr = [...products];
-  const i = arr.findIndex((p) => p.id === SWAP_PAIR[0]);
-  const j = arr.findIndex((p) => p.id === SWAP_PAIR[1]);
-  if (i !== -1 && j !== -1) [arr[i], arr[j]] = [arr[j], arr[i]];
+  for (const [id1, id2] of SWAP_PAIRS) {
+    const i = arr.findIndex((p) => p.id === id1);
+    const j = arr.findIndex((p) => p.id === id2);
+    if (i !== -1 && j !== -1) [arr[i], arr[j]] = [arr[j], arr[i]];
+  }
   return arr;
 }
 

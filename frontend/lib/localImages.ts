@@ -1,7 +1,7 @@
 const P = "/products";
 
 export const NAME_OVERRIDES: Record<number, string> = {
-  439033673: "Tshirt oversize Faithful",
+  439033673: "T-shirt oversize Faithful",
   464383614: "Hoodie Faithful Women Edition",
   445115732: "T-shirt Faithful Women Edition",
   464484809: "Bonnet Faithful \"The Lifter\"",
