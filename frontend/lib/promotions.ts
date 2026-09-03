@@ -4,6 +4,7 @@ import { CartItem } from "@/context/CartContext";
 export const SECOND_ITEM_DISCOUNT_PRODUCTS: Record<number, number> = {
   439033673: 0.2, // Tshirt oversize Faithful
   445132020: 0.2, // Little Faithful — Jesus Loves Me (body bébé)
+  464952476: 0.2, // Pull Faithful
 };
 
 export interface PricedLine {
