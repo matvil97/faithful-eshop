@@ -12,6 +12,21 @@ export function getLocalName(productId: number): string | null {
 }
 
 export const LOCAL_IMAGES: Record<number, Record<string, string[]>> = {
+  // "Faithful short blanc" — ID Printful 439122177
+  439122177: {
+    White: [
+      `${P}/all-over-print-unisex-athletic-long-shorts-white-front-6a98d0ff1fcd8.png`,
+      `${P}/all-over-print-unisex-athletic-long-shorts-white-front-2-6a98d0ff204bc.png`,
+      `${P}/all-over-print-unisex-athletic-long-shorts-white-front-6a98d0ff20394.png`,
+      `${P}/all-over-print-unisex-athletic-long-shorts-white-back-6a98d0ff2025f.png`,
+      `${P}/all-over-print-unisex-athletic-long-shorts-white-back-2-6a98d0ff20840.png`,
+      `${P}/all-over-print-unisex-athletic-long-shorts-white-back-6a98d0ff2070a.png`,
+      `${P}/all-over-print-unisex-athletic-long-shorts-white-left-6a98d0ff20116.png`,
+      `${P}/all-over-print-unisex-athletic-long-shorts-white-right-6a98d0ff1ffd8.png`,
+      `${P}/all-over-print-unisex-athletic-long-shorts-white-left-back-6a98d0ff205e3.png`,
+    ],
+  },
+
   // "Bonnet Faithful The Lifter" — ID Printful 464484809
   464484809: {
     Black: [

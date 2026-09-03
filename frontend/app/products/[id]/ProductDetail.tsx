@@ -21,6 +21,7 @@ function getVariantImage(variant: ProductVariant, thumbnail: string): string {
 }
 
 function getColorName(variant: ProductVariant): string {
+  if (variant.color) return variant.color;
   const parts = variant.name.split(" / ");
   if (parts.length >= 3) return parts[parts.length - 2];
   if (parts.length === 2 && KNOWN_COLORS.has(parts[1])) return parts[1];
@@ -28,6 +29,7 @@ function getColorName(variant: ProductVariant): string {
 }
 
 function getSizeName(variant: ProductVariant): string {
+  if (variant.size) return variant.size;
   const parts = variant.name.split(" / ");
   if (parts.length >= 3) return parts[parts.length - 1];
   if (parts.length === 2 && !KNOWN_COLORS.has(parts[1])) return parts[1];

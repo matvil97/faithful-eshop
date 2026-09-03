@@ -7,6 +7,10 @@ export interface ProductVariant {
   currency: string;
   files: { type: string; preview_url: string }[];
   availability_status?: string;
+  // Champs natifs Printful — plus fiables que de parser `name`, qui omet
+  // la couleur quand le produit n'en a qu'une seule (ex: "Short / 2XS").
+  color?: string;
+  size?: string;
 }
 
 export interface Product {

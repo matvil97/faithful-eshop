@@ -25,12 +25,14 @@ function getPrintfulImages(variant: ProductVariant, thumbnail: string): string[]
 }
 
 function getColorName(v: ProductVariant) {
+  if (v.color) return v.color;
   const p = v.name.split(" / ");
   if (p.length >= 3) return p[p.length - 2];
   if (p.length === 2 && KNOWN_COLORS.has(p[1])) return p[1];
   return p[0];
 }
 function getSizeName(v: ProductVariant) {
+  if (v.size) return v.size;
   const p = v.name.split(" / ");
   if (p.length >= 3) return p[p.length - 1];
   if (p.length === 2 && !KNOWN_COLORS.has(p[1])) return p[1];
