@@ -2,7 +2,8 @@ import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 
 // Passe à true pour fermer le site.
-const MAINTENANCE_MODE = true;
+// Toujours désactivé en local (npm run dev) pour pouvoir tester le site normalement.
+const MAINTENANCE_MODE = false && process.env.NODE_ENV === "production";
 
 const html = `<!doctype html>
 <html lang="fr">
