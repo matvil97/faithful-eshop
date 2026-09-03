@@ -6,7 +6,7 @@ export const NAME_OVERRIDES: Record<number, string> = {
   445115732: "T-shirt Faithful Women Edition",
   464484809: "Bonnet Faithful \"The Lifter\"",
   464815111: "Sweat Faithful Women Edition",
-  464868999: "Hoodie Faithful For Men",
+  464868999: "Hoodie Faithful Premium Edition",
 };
 
 export function getLocalName(productId: number): string | null {
@@ -17,9 +17,9 @@ export const LOCAL_IMAGES: Record<number, Record<string, string[]>> = {
   // "Hoodie Faithful for men" — ID Printful 464868999
   464868999: {
     Black: [
+      `${P}/unisex-premium-pullover-hoodie-black-front-6a998e6449efb.png`,
       `${P}/unisex-premium-pullover-hoodie-black-front-6a998e6447baa.png`,
       `${P}/unisex-premium-pullover-hoodie-black-front-6a998e6448fc8.png`,
-      `${P}/unisex-premium-pullover-hoodie-black-front-6a998e6449efb.png`,
       `${P}/unisex-premium-pullover-hoodie-black-front-6a998e6449b2f.png`,
       `${P}/unisex-premium-pullover-hoodie-black-front-6a998e6448c08.png`,
       `${P}/unisex-premium-pullover-hoodie-black-left-front-6a998e644a285.png`,
