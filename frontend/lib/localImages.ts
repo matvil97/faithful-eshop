@@ -30,16 +30,16 @@ export const LOCAL_IMAGES: Record<number, Record<string, string[]>> = {
   // "Bonnet Faithful The Lifter" — ID Printful 464484809
   464484809: {
     Black: [
-      `${P}/cuffed-beanie-black-front-6a98c740096dc.png`,
       `${P}/cuffed-beanie-black-front-6a98c740091ce.png`,
+      `${P}/cuffed-beanie-black-front-6a98c740096dc.png`,
     ],
     "Dark Grey": [
-      `${P}/cuffed-beanie-dark-grey-front-6a98c74009724.png`,
       `${P}/cuffed-beanie-dark-grey-front-6a98c740092ba.png`,
+      `${P}/cuffed-beanie-dark-grey-front-6a98c74009724.png`,
     ],
     White: [
-      `${P}/cuffed-beanie-white-front-6a98c7400974b.png`,
       `${P}/cuffed-beanie-white-front-6a98c740092e0.png`,
+      `${P}/cuffed-beanie-white-front-6a98c7400974b.png`,
     ],
   },
 
