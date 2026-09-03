@@ -10,7 +10,7 @@ const CATEGORY_IDS: Record<string, number[] | null> = {
   tout: null,
   tshirts: [24, 58, 32, 14],
   hoodies: [28],
-  accessoires: [195, 41, 46, 48, 244],
+  accessoires: [195, 41, 46, 48, 244, 45],
 };
 
 // Ordre d'affichage dans "Tout" : vêtements d'abord, accessoires ensuite

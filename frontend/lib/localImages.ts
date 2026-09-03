@@ -4,6 +4,7 @@ export const NAME_OVERRIDES: Record<number, string> = {
   439033673: "Tshirt oversize Faithful",
   464383614: "Hoodie Faithful Women Edition",
   445115732: "T-shirt Faithful Women Edition",
+  464484809: "Bonnet Faithful \"The Lifter\"",
 };
 
 export function getLocalName(productId: number): string | null {
@@ -11,6 +12,22 @@ export function getLocalName(productId: number): string | null {
 }
 
 export const LOCAL_IMAGES: Record<number, Record<string, string[]>> = {
+  // "Bonnet Faithful The Lifter" — ID Printful 464484809
+  464484809: {
+    Black: [
+      `${P}/cuffed-beanie-black-front-6a98c740091ce.png`,
+      `${P}/cuffed-beanie-black-front-6a98c740096dc.png`,
+    ],
+    "Dark Grey": [
+      `${P}/cuffed-beanie-dark-grey-front-6a98c740092ba.png`,
+      `${P}/cuffed-beanie-dark-grey-front-6a98c74009724.png`,
+    ],
+    White: [
+      `${P}/cuffed-beanie-white-front-6a98c740092e0.png`,
+      `${P}/cuffed-beanie-white-front-6a98c7400974b.png`,
+    ],
+  },
+
   // "Bob Faithful edition summer" — ID Printful 441875248
   441875248: {
     Black: [
@@ -174,6 +191,7 @@ export function getLocalImages(productId: number, colorName: string): string[] |
 
 const DEFAULT_COLOR: Record<number, string> = {
   464383614: "Black",
+  464484809: "Black",
   441875248: "White",
   439033673: "White",
 };

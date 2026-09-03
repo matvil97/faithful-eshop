@@ -35,6 +35,7 @@ const COLOR_HEX: Record<string, string> = {
   "Charcoal": "#54534d",
   "Dark Chocolate": "#3b2314",
   "Military Green": "#4b5320",
+  "Dark Grey": "#6b6b6b",
 };
 
 const KNOWN_COLORS = new Set(Object.keys(COLOR_HEX));
