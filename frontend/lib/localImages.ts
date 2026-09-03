@@ -15,8 +15,8 @@ export const LOCAL_IMAGES: Record<number, Record<string, string[]>> = {
   // "Faithful short blanc" — ID Printful 439122177
   439122177: {
     White: [
-      `${P}/all-over-print-unisex-athletic-long-shorts-white-front-6a996079d0913.png`,
       `${P}/all-over-print-unisex-athletic-long-shorts-white-front-2-6a996079d10bc.png`,
+      `${P}/all-over-print-unisex-athletic-long-shorts-white-front-6a996079d0913.png`,
       `${P}/all-over-print-unisex-athletic-long-shorts-white-front-6a996079d0f8f.png`,
       `${P}/all-over-print-unisex-athletic-long-shorts-white-back-6a996079d0e32.png`,
       `${P}/all-over-print-unisex-athletic-long-shorts-white-back-2-6a996079d1459.png`,

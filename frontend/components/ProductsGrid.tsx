@@ -25,6 +25,7 @@ function categoryRank(product: Product): number {
 const SWAP_PAIRS: [number, number][] = [
   [439033673, 445132020], // t-shirt oversize <-> body bébé (si réintroduit un jour)
   [439033673, 439122177], // t-shirt oversize <-> short (regroupe les 2 t-shirts)
+  [439122177, 464383614], // short <-> hoodie
 ];
 
 function withSwap(products: Product[]): Product[] {
